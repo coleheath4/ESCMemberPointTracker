@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  host: MyString
+  point_value: 1
+  event_date: 2020-09-19 16:22:02
+
+two:
+  name: MyString
+  description: MyString
+  host: MyString
+  point_value: 1
+  event_date: 2020-09-19 16:22:02
