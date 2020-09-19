@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  points_required: 1
+  when: 2020-09-19 16:23:06
+
+two:
+  name: MyString
+  description: MyString
+  points_required: 1
+  when: 2020-09-19 16:23:06
