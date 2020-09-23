@@ -25,9 +25,44 @@ class SessionsController < ApplicationController
     end
   end
   
+  def register_create
+    if params_are_found?(params, ['username', 'password', 'password_confirm', 'email', 'first_name', 'last_name'])
+      if !(User.where(email: params[:email]).first || User.where(username: params[:username]).first) && params[:password].eql?(params[:password_confirm])
+          u = User.new
+          u.username = params[:username]
+          u.password = params[:password]
+          u.email = params[:email]
+          u.first_name = params[:first_name]
+          u.last_name = params[:last_name]
+          u.points = 0
+          u.is_admin = false
+          u.save!
+
+          puts 'In this operation here!'
+          
+          session[:user_id] = u.id
+          redirect_to(me_path)
+      else
+        puts 'Error'
+        redirect_to(register_path)
+      end
+    end
+
+  end
+  
   def destroy
   	session[:user_id] = nil
   	redirect_to signin_path
+  end
+
+  def params_are_found?(params, items)
+    items.each do |n|
+      if !params[n].present?
+        return false
+      end
+    end
+
+    return true
   end
 
 end
