@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+	has_secure_password
+	
   def self.find_or_create_from_auth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
 			user.provider = auth.provider

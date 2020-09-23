@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'google_login', to: redirect('/auth/google_oauth2'), as: 'google_login'
+  get 'signin', to: 'signin#show', as: 'signin'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'google_login', to: redirect('/auth/google_oauth2'), as: 'google_login'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'home', to: 'home#show'
   get 'me', to: 'me#show', as: 'me'
-  get 'signin', to: 'signin#show', as: 'signin'
+  
+  post 'default_login', to: 'sessions#default_create', as: 'default_login'
   
   resources :users do
     member do
