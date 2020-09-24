@@ -34,9 +34,6 @@ class SessionsController < ApplicationController
   end
   
   def register_create
-    puts "PARAMS: "
-    puts params
-
     if params[:user].present?
       keys = ['email', 'first_name', 'last_name', 'uid', 'provider']
 
@@ -62,17 +59,16 @@ class SessionsController < ApplicationController
 
           u.uid = session[:uid]
           u.provider = session[:provider]
-          puts params[:uid]
           
           u.save!
 
           session[:user_id] = u.id
           redirect_to(me_path)
       else
-        puts 'Error'
         redirect_to(register_path)
       end
     else
+      # todo handle this error
       puts "This is not supposed to happen"
     end
 
@@ -86,13 +82,9 @@ class SessionsController < ApplicationController
   def params_are_found?(params, items)
 
     items.each do |n|
-      puts 'This val n'
-      puts n
       if !params[n].present?
-        puts 'Not present'
         return false
       end
-      puts 'Present'
     end
 
     return true
