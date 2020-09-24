@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   
   def create
   	@user = User.find_or_create_from_auth(request.env["omniauth.auth"])
-    if @user.created_at == @user.updated_at
+    if @user.new_record?
       session[:email] = @user.email
       session[:first_name] = @user.first_name
       session[:last_name] = @user.last_name
@@ -60,13 +60,12 @@ class SessionsController < ApplicationController
           u.points = 0
           u.is_admin = false
 
-          u.uid = params[:uid]
-          u.uid = params[:provider]
+          u.uid = session[:uid]
+          u.provider = session[:provider]
+          puts params[:uid]
           
           u.save!
 
-          puts 'In this operation here!'
-          
           session[:user_id] = u.id
           redirect_to(me_path)
       else

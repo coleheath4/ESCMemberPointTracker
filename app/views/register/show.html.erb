@@ -2,8 +2,8 @@
 
 <div class="register">
     <%= form_for(@user, url: attempt_register_path, method: :post) do |u|%>
-    <% hidden_field_tag(:uid, @user.uid) %>
-    <% hidden_field_tag(:provider, @user.provider) %>
+    <%# <%= u.hidden_field :uid %> 
+    <%# <%= u.hidden_field :provider %> 
     <table>
         <tr>
             <td><%= label_tag(:username) %></td>
