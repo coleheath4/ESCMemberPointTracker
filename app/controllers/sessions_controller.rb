@@ -2,7 +2,15 @@ class SessionsController < ApplicationController
   
   def create
   	@user = User.find_or_create_from_auth(request.env["omniauth.auth"])
-  	session[:user_id] = @user.id
+    if @user.created_at == @user.updated_at
+      session[:email] = @user.email
+      session[:first_name] = @user.first_name
+      session[:last_name] = @user.last_name
+      session[:uid] = @user.uid
+      session[:provider] = @user.provider
+      redirect_to(register_path) and return
+    end
+    session[:user_id] = @user.id
   	redirect_to :me
   end
 
@@ -26,6 +34,21 @@ class SessionsController < ApplicationController
   end
   
   def register_create
+    puts "PARAMS: "
+    puts params
+
+    if params[:user].present?
+      keys = ['email', 'first_name', 'last_name', 'uid', 'provider']
+
+      u = params[:user]
+
+      keys.each do |k|
+        if u[k].present?
+          params[k] = u[k]
+        end
+      end
+    end
+    
     if params_are_found?(params, ['username', 'password', 'password_confirm', 'email', 'first_name', 'last_name'])
       if !(User.where(email: params[:email]).first || User.where(username: params[:username]).first) && params[:password].eql?(params[:password_confirm])
           u = User.new
@@ -36,6 +59,10 @@ class SessionsController < ApplicationController
           u.last_name = params[:last_name]
           u.points = 0
           u.is_admin = false
+
+          u.uid = params[:uid]
+          u.uid = params[:provider]
+          
           u.save!
 
           puts 'In this operation here!'
@@ -46,6 +73,8 @@ class SessionsController < ApplicationController
         puts 'Error'
         redirect_to(register_path)
       end
+    else
+      puts "This is not supposed to happen"
     end
 
   end
@@ -56,10 +85,15 @@ class SessionsController < ApplicationController
   end
 
   def params_are_found?(params, items)
+
     items.each do |n|
+      puts 'This val n'
+      puts n
       if !params[n].present?
+        puts 'Not present'
         return false
       end
+      puts 'Present'
     end
 
     return true
