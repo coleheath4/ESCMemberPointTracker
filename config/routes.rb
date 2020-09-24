@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'dashboard/index'
   get 'signin', to: 'signin#show', as: 'signin'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'register', to: 'register#show', as: 'register'
