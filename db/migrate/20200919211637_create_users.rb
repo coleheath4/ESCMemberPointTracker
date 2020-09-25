@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :username
       t.string :password
-      t.string :hash
+      t.string :hashed_pwd
       t.boolean :is_admin
       t.integer :points
       t.integer :events, array: true
