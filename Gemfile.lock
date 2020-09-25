@@ -227,6 +227,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)
+  omniauth-google-oauth2
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)

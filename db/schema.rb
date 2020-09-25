@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 2020_09_23_003824) do
     t.string "last_name"
     t.string "email"
     t.string "username"
-    t.string "password"
-    t.string "hashed_pwd"
     t.boolean "is_admin"
     t.integer "points"
     t.integer "events", array: true
