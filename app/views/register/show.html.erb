@@ -1,0 +1,38 @@
+<h1>Register</h1>
+
+<div class="register">
+    <%= form_for(@user, url: attempt_register_path, method: :post) do |u|%>
+    <% hidden_field_tag(:uid, @user.uid) %>
+    <% hidden_field_tag(:provider, @user.provider) %>
+    <table>
+        <tr>
+            <td><%= label_tag(:username) %></td>
+            <td><%= text_field_tag(:username, params[:username]) %></td>
+        </tr>
+        <tr>
+            <td><%= label_tag(:password) %> </td>
+            <td><%= password_field_tag(:password) %> </td>
+        </tr>
+        <tr>
+            <td><%= label_tag(:password_confirm) %></td>
+            <td><%= password_field_tag(:password_confirm) %></td>
+        </tr>
+        <tr>
+            <td><%= label_tag(:email) %></td>
+            <td><%= u.email_field(:email) %></td>
+        </tr>
+             <tr>
+            <td><%= label_tag(:first_name) %></td>
+            <td><%= u.text_field(:first_name) %></td>
+        </tr>
+        <tr>
+            <td><%= label_tag(:last_name) %></td>
+            <td><%= u.text_field(:last_name) %></td>
+        </tr>  
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= submit_tag("Register") %></td>
+        </tr>
+    </table>
+    <% end %>
+</div>
