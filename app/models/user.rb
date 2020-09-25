@@ -14,4 +14,7 @@ class User < ApplicationRecord
 			# user.save!
 		end
   end
+
+  scope :sorted, lambda { order("points DESC") }
+
 end
