@@ -1,0 +1,22 @@
+<table summary="User form fields">
+    <tr>
+    <th>First Name</th>
+        <td><%= u.text_field(:first_name) %></td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td><%= u.text_field(:last_name) %></td>
+    </tr>
+    <tr>
+        <th>Admin</th>
+        <td><%= u.select(:is_admin, [true, false]) %></td>
+    </tr>
+    <tr>
+        <th>Username</th>
+        <td><%= u.text_field(:username) %></td>
+    </tr>
+    <tr>
+        <th>Points</th>
+        <td><%= u.text_field(:points) %></td>
+    </tr>
+</table>

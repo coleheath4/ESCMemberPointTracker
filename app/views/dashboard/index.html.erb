@@ -1,0 +1,12 @@
+<h1>Dashboard</h1>
+<h3>Name:</h3>
+<p>
+    <%= current_user.first_name %>
+    <%= current_user.last_name %>
+</p>
+<h3>Number of points:</h3>
+<p>
+    <%= current_user.points %>
+</p>
+
+<%= link_to('Logout', logout_path)%>
