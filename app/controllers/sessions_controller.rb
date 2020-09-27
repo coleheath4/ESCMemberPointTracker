@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to(register_path) and return
     end
     session[:user_id] = @user.id
-  	redirect_to :me
+  	redirect_to :dashboard
   end
 
   def default_create
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     if found_user
       session[:user_id] = found_user.id
       flash[:notice] = "You are now logged in."
-      redirect_to me_path
+      redirect_to dashboard_path
     else
       flash.now[:notice] = "Invalid username/password combination."
       render('signin/show')
@@ -68,7 +68,7 @@ class SessionsController < ApplicationController
           puts 'In this operation here!'
           
           session[:user_id] = u.id
-          redirect_to(me_path)
+          redirect_to(dashboard_path)
       else
         puts 'Error'
         redirect_to(register_path)
