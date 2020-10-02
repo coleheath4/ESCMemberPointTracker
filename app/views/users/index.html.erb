@@ -8,16 +8,16 @@
 
   <table class="listing" summary="User list">
     <tr class="header">
-      <th>First Name</th>
-      <th>Last Name</th>
+      <%# <th>First Name</th> %>
+      <%# <th>Last Name</th> %>
       <th>Username</th>
       <th>Admin</th>
       <th>Points</th>
     </tr>
     <% @users.each do |user| %>
     <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
+      <%# <td><%= user.first_name ></td> %>
+      <%# <td><%= user.last_name ></td> %>
       <td><%= user.username %></td>
       <td><%= user.is_admin %></td>
       <td><%= user.points %></td>

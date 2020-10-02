@@ -1,7 +1,7 @@
 <%= link_to("<< Back to List", users_path, :class => 'back-link') %>
 
 <div class="users show">
-  <h2>Show Student</h2>
+  <h2>Member Details</h2>
 
   <table summary="User detail view">
     <tr>
@@ -17,6 +17,10 @@
       <td><%= @user.username %></td>
     </tr>
     <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
       <th>Admin</th>
       <td><%= @user.is_admin %></td>
     </tr>
@@ -24,6 +28,11 @@
       <th>Points</th>
       <td><%= @user.points %></td>
     </tr>
+    <tr>
+      <th>Events</th>
+      <td><%= @user.events %></td>
+    </tr>
+
   </table>
 
 </div>
