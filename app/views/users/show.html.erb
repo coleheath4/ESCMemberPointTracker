@@ -32,7 +32,9 @@
       <th>Events</th>
       <td><%= @user.events %></td>
     </tr>
-
   </table>
+
+  <%= link_to("Edit User", edit_user_path(@user), :class => 'action edit') %>
+  <%= link_to("Delete User", delete_user_path(@user), :class => 'action delete') %>
 
 </div>
