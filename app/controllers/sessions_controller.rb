@@ -80,7 +80,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-  	session[:user_id] = nil
+    session[:user_id] = nil
+    cookies.delete :user_token
   	redirect_to signin_path
   end
 
