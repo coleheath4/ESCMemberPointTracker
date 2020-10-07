@@ -1,25 +1,15 @@
-<h1> Sign in to ESC Member Point Tracker </h1>
+<%= stylesheet_link_tag 'signin' %>
 
-<div class="login">
-  <%= form_tag(default_login_path, :method => :post) do %>
-  <table>
-    <tr>
-      <td><%= label_tag(:username) %></td>
-      <td><%= text_field_tag(:username, params[:username]) %></td>
-    </tr>
-    <tr>
-      <td><%= label_tag(:password) %></td>
-      <td><%= password_field_tag(:password) %></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td><%= submit_tag("Log In") %></td>
-    </tr>
-  </table>
+<div class="login main">
+<p class='sign top'>Sign in</p>
+<p class=sign>ESC Member Point Tracker </p>
+  <%= form_tag(default_login_path, :method => :post, class: 'form1') do %>
+      <td><%= text_field_tag(:username, params[:username], placeholder: 'username') %></td>
+      <td><%= password_field_tag(:password, '', placeholder: 'password') %></td>
+      <td><%= submit_tag("Log In", class: 'submit center') %></td>
   <% end %>
+  <td><%= link_to('Sign in with Google', google_login_path, class: 'center') %></td>
+  <br>
+  <td><%= link_to('Register', register_path, class: 'submit') %></td>
 </div>
 
-<br>
-<%= link_to('Sign in with Google', google_login_path)%>
-<br>
-<%= link_to('Register', register_path)%>
