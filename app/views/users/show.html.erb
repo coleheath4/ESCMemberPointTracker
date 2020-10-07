@@ -1,2 +1,40 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= link_to("<< Back to List", users_path, :class => 'back-link') %>
+
+<div class="users show">
+  <h2>Member Details</h2>
+
+  <table summary="User detail view">
+    <tr>
+      <th>First Name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @user.last_name %></td>
+    </tr>
+    <tr>
+      <th>Username</th>
+      <td><%= @user.username %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>Admin</th>
+      <td><%= @user.is_admin %></td>
+    </tr>
+    <tr>
+      <th>Points</th>
+      <td><%= @user.points %></td>
+    </tr>
+    <tr>
+      <th>Events</th>
+      <td><%= @user.events %></td>
+    </tr>
+  </table>
+
+  <%= link_to("Edit User", edit_user_path(@user), :class => 'action edit') %>
+  <%= link_to("Delete User", delete_user_path(@user), :class => 'action delete') %>
+
+</div>

@@ -1,2 +1,27 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% @student_title = "All Students" %>
+
+<div class="books index">
+  <h2>Members</h2>
+
+  <table class="listing" summary="User list">
+    <tr class="header">
+      <%# <th>First Name</th> %>
+      <%# <th>Last Name</th> %>
+      <th>Name</th>
+      <th />
+      <th>Points</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <%# <td><%= user.first_name ></td> %>
+      <%# <td><%= user.last_name ></td> %>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.points %></td>
+      <td class="actions">
+        <%= link_to("Details", user_path(user), :class => 'action show') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
