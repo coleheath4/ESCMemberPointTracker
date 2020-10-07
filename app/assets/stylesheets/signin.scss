@@ -132,6 +132,22 @@ font-family: 'Ubuntu', sans-serif;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
+.submit.submit_register{
+    cursor: pointer;
+      border-radius: 5em;
+      color: #fff;
+      background: linear-gradient(to right, #27a0b0, #40dffb);
+      border: 0;
+      padding-left: 40px;
+      padding-right: 43px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      margin-left: 33%;
+      font-size: 13px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
 .reg {
     text-align: center;
     padding-left: 40px;

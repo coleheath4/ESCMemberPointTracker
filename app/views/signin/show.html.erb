@@ -8,8 +8,8 @@
       <td><%= password_field_tag(:password, '', placeholder: 'password') %></td>
       <td><%= submit_tag("Log In", class: 'submit center') %></td>
   <% end %>
-  <td><%= link_to('Sign in with Google', google_login_path, class: 'center') %></td>
+  <%# <td><%= link_to('Sign in with Google', google_login_path, class: 'center') %> <%#</td> %>
   <br>
-  <td><%= link_to('Register', register_path, class: 'submit') %></td>
+  <td><%= link_to('Register', register_path, class: 'submit submit_register') %></td>
 </div>
 
