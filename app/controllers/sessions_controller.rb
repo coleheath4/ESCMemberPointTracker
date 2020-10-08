@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   
   def create
   	@user = User.find_or_create_from_auth(request.env["omniauth.auth"])
-    if @user.created_at == @user.updated_at
+    if @user.new_record?
       session[:email] = @user.email
       session[:first_name] = @user.first_name
       session[:last_name] = @user.last_name
@@ -34,9 +34,6 @@ class SessionsController < ApplicationController
   end
   
   def register_create
-    puts "PARAMS: "
-    puts params
-
     if params[:user].present?
       keys = ['email', 'first_name', 'last_name', 'uid', 'provider']
 
@@ -60,40 +57,35 @@ class SessionsController < ApplicationController
           u.points = 0
           u.is_admin = false
 
-          u.uid = params[:uid]
-          u.uid = params[:provider]
+          u.uid = session[:uid]
+          u.provider = session[:provider]
           
           u.save!
 
-          puts 'In this operation here!'
-          
           session[:user_id] = u.id
           redirect_to(dashboard_path)
       else
-        puts 'Error'
         redirect_to(register_path)
       end
     else
+      # todo handle this error
       puts "This is not supposed to happen"
     end
 
   end
   
   def destroy
-  	session[:user_id] = nil
+    session[:user_id] = nil
+    cookies.delete :user_token
   	redirect_to signin_path
   end
 
   def params_are_found?(params, items)
 
     items.each do |n|
-      puts 'This val n'
-      puts n
       if !params[n].present?
-        puts 'Not present'
         return false
       end
-      puts 'Present'
     end
 
     return true
