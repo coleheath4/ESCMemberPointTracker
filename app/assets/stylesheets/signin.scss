@@ -1,3 +1,177 @@
-// Place all the styles related to the signin controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+    background-color: #ebf4f6;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+// .main {
+//     background-color: white;
+//     // display: grid;
+//     // place-items: center;
+//     width: 90%;
+//     max-width: 400px;
+//     height: 400px;
+//     margin: 10em auto;
+//     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+// }
+
+// .sign {
+//     font-family: 'Ubuntu';
+//     font-size: 20px;
+//     text-align: center;
+//     font-weight: bold;
+//     margin-top: 1em;
+//     color: #5573aa;
+// }
+
+// .sign.top {
+//     margin-top: 10px;
+// }
+
+// #username {
+//     width: 76%;
+//     text-align: center;
+//     font-size: 14px;
+//     letter-spacing: 1px;
+//     border
+//     margin: 0px 40px 0pc 40px;
+//     border-radius: 35px;
+//     height: 25px;
+//     border-color: #5573aa;
+// }
+
+.main {
+    background-color: #FFFFFF;
+    width: 90%;
+    max-width: 25em;
+    // min-width: 400px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 0;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    position: relative;
+}
+
+.sign {
+    color: #5573aa;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0%;
+}
+
+.sign.top {
+    font-size: 25px;
+    padding-top: 40px;
+    margin-bottom: 5px;
+}
+
+#username {
+width: 76%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+form.form1 {
+    padding-top: 40px;
+}
+
+#password {
+        width: 76%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+
+.un:focus, .pass:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    
+}
+
+.submit {
+  cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #27a0b0, #40dffb);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 35%;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.submit.submit_register{
+    cursor: pointer;
+      border-radius: 5em;
+      color: #fff;
+      background: linear-gradient(to right, #27a0b0, #40dffb);
+      border: 0;
+      padding-left: 40px;
+      padding-right: 43px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      margin-left: 33%;
+      font-size: 13px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+.reg {
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: red;
+}
+
+.forgot {
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #E1BEE7;
+    padding-top: 15px;
+}
+
+a {
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #E1BEE7;
+    text-decoration: none
+}
+
+// @media (max-width: 600px) {
+//     .main {
+//         border-radius: 0px;
+//     }
+    
+    
+
+// }

@@ -1,3 +1,25 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<div id='smodal' class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm promotion to Admin?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id='modal_text' class="modal-body">
+        <p>Are you sure you want to promote <b> <%= @user.first_name%> <%= @user.last_name %></b> to an administrator?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" onclick='approveChange()'>Confirm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= link_to("<< Back to List", users_path, :class => 'back-link') %>
 
 <div class="users edit">
@@ -10,6 +32,31 @@
     <div class="form-buttons">
       <%= u.submit("Update User") %>
     </div>
-
   <% end %>
 </div>
+
+<script>
+  // add onclick behavior to admin selection
+  document.getElement
+  const confirmChange = () => {
+    console.log('Displaying modal');
+
+    e = document.getElementById('user_is_admin');
+    if (e.value === 'true') {
+      $('#smodal').modal('show');
+      e.value = 'false';
+    }
+  };
+
+  function approveChange() {
+    e.value = 'true';
+    $('#smodal').modal('hide');
+  }
+  
+  document.getElementById('user_is_admin').onchange=confirmChange;
+  console.log('Done!');
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

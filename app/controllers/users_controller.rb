@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  before_action :authenticate
 
   def index
-    @users = User.sorted
+    if user_is_admin?
+      @users = User.sorted
+    else
+      redirect_to(dashboard_path)
+    end
   end
 
   def show
@@ -52,7 +57,7 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :is_admin, :points)
+    params.require(:user).permit(:first_name, :last_name, :is_admin, :username, :email, :points)
   end
 
 end
