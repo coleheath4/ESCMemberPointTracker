@@ -1,7 +1,11 @@
 class SigninController < ApplicationController
   def show
     if user_signed_in?
-      redirect_to(dashboard_path)
+      if user_is_admin?
+        redirect_to(users_path)
+      else 
+        redirect_to(dashboard_path)
+      end
     end
   end
 end
