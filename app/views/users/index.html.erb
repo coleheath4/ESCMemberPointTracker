@@ -3,28 +3,23 @@
 <div class="books index">
   <h2>Members</h2>
 
-  <%# <%= image_tag('plus_sign.png', :size => '11x11', :alt => '+') %>
-  <%= link_to("Add New User", new_user_path, :class => 'action new') %>
-
   <table class="listing" summary="User list">
     <tr class="header">
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-      <th>Admin</th>
+      <%# <th>First Name</th> %>
+      <%# <th>Last Name</th> %>
+      <th>Name</th>
+      <th />
       <th>Points</th>
     </tr>
     <% @users.each do |user| %>
     <tr>
+      <%# <td><%= user.first_name ></td> %>
+      <%# <td><%= user.last_name ></td> %>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
-      <td><%= user.username %></td>
-      <td><%= user.is_admin %></td>
       <td><%= user.points %></td>
       <td class="actions">
-        <%= link_to("Show", user_path(user), :class => 'action show') %>
-        <%= link_to("Edit", edit_user_path(user), :class => 'action edit') %>
-        <%= link_to("Delete", delete_user_path(user), :class => 'action delete') %>
+        <%= link_to("Details", user_path(user), :class => 'action show') %>
       </td>
     </tr>
     <% end %>
