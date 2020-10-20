@@ -1,6 +1,9 @@
 class RewardsController < ApplicationController
 
   def index
+    @rewards = Reward.sorted
+    @is_admin = user_is_admin?
+    @user = current_user
   end
 
   def show
@@ -23,5 +26,5 @@ class RewardsController < ApplicationController
 
   def destroy
   end
-
+  
 end
