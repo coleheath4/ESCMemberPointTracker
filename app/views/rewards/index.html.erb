@@ -1,11 +1,26 @@
+<%# User info %>
+<h1>Rewards</h1>
+<h2>My Info</h2>
+<table>
+    <tr>
+        <th>Points: </th>
+        <td><%= @user.points %>
+    </tr>
+</table>
+
 <% if @is_admin %>
-<h1>This will display if you are an admin</h1>
-Add option to add rewards
-<%= link_to("Add Reward", new_reward_path(), class: 'action new')%>
+<h2>Admin Panel</h2>
+<table>
+    <tr>
+        <td>
+            <%= link_to("Add Reward", new_reward_path(), class: 'action new')%>
+        </td>
+    </tr>
+</table>
 <% end %>
 
 <div class="rewards index">
-    <h2>Rewards</h2>
+    <h2>Upcomming Rewards</h2>
     
     <table class="listing" summary="Reward list">
         <tr>
@@ -20,7 +35,39 @@ Add option to add rewards
             <th>Last Updated</th>
             <% end %>
         </tr>
-        <% @rewards.each do |r| %>
+        <% @future_rewards.each do |r| %>
+        <tr>
+            <td><%= Reward.stringify_date(r.when) %></td>
+            <td><%= r.name %></td>
+            <td><%= r.short_description%></td>
+            <td><%= r.points_required %></td>
+            <td><%= r.percent(@user, dec_digits=0, symbol=true) %></td>
+            <% if @is_admin %>
+            <td><%= Reward.stringify_date(r.created_at) %></td>
+            <td><%= Reward.stringify_date(r.updated_at) %></td>
+            <td class="actions">
+                <%= link_to("Edit", edit_reward_path(@user), class: 'action edit') %>
+            </td>
+            <% end %>
+        </tr>
+        <% end %>
+    </table>
+
+    <h2>Past Rewards</h2>
+    <table class="listing" summary="Reward list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Points</th>
+            <th>Completion</th>
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+        </tr>
+        <% @past_rewards.each do |r| %>
         <tr>
             <td><%= Reward.stringify_date(r.when) %></td>
             <td><%= r.name %></td>

@@ -21,6 +21,27 @@ class Reward < ApplicationRecord
     return val
   end
   
+  # Returns two objects, the first an array of future rewards and
+  # the second an array of past rewards
+  def self.all_split(rewards=nil)
+    if rewards.nil?
+      rewards = Rewards.all     
+    end
+    future_rewards = []
+    past_rewards = []
+    today = Time.now
+    
+    rewards.each do |r|
+      if (r.when > today)
+        future_rewards << r
+      else
+        past_rewards << r
+      end
+    end
+    
+    return future_rewards, past_rewards
+  end
+  
   def self.stringify_date(r)
     return String(I18n.t("date.abbr_month_names")[r.month]) + ' ' + String(r.day) + ', ' + String(r.year)
   end

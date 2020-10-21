@@ -1,7 +1,7 @@
 class RewardsController < ApplicationController
 
   def index
-    @rewards = Reward.sorted
+    @future_rewards, @past_rewards = Reward.all_split(Reward.sorted)
     @is_admin = user_is_admin?
     @user = current_user
   end
