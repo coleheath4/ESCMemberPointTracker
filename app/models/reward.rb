@@ -20,6 +20,10 @@ class Reward < ApplicationRecord
     
     return val
   end
+
+  def has_all_required_fields?
+    !name.nil? && !points_required.nil? && !self.when.nil?
+  end
   
   # Returns two objects, the first an array of future rewards and
   # the second an array of past rewards

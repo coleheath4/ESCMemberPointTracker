@@ -10,9 +10,19 @@ class RewardsController < ApplicationController
   end
 
   def new
+    @reward = Reward.new
   end
 
   def create
+    @reward = Reward.new(reward_params)
+
+    if @reward.save && @reward.has_all_required_fields?
+      flash[:notice] = "Reward created successfully"
+      redirect_to(rewards_path)
+    else
+      flash[:notice] = "Inocrrect fields"
+      render('new')
+    end
   end
 
   def edit
@@ -25,6 +35,10 @@ class RewardsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  def reward_params
+    params.require(:reward).permit(:name, :description, :points_required, :when)
   end
   
 end

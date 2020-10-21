@@ -1,2 +1,13 @@
-<h1>Rewards#new</h1>
-<p>Find me in app/views/rewards/new.html.erb</p>
+<%= link_to("<< Back to Events", rewards_path, class: 'back-link')%>
+
+<div class="event new">
+    <h2>Create New Event</h2>
+
+    <%= form_for(@reward, :url => rewards_path, :method => "post") do |r|%>
+        <%= render(:partial => 'form', :locals => {:r => r})%>
+
+        <div class="form-button">
+            <%= r.submit('Create Event') %>
+        </div>
+    <% end %>
+</div>
