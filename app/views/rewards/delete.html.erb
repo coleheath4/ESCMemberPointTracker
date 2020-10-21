@@ -1,2 +1,17 @@
-<h1>Rewards#delete</h1>
-<p>Find me in app/views/rewards/delete.html.erb</p>
+<%= link_to("<< Back to Reward Details", users_path, :class => 'back-link') %>
+
+<div class="users delete">
+  <h2>Delete Reward</h2>
+
+  <%= form_for(@reward, :method => 'delete') do |r| %>
+
+    <p>Are you sure you want to permanently delete the reward?</p>
+
+    <p class="reference-name"><%= r.object.name%></p>
+
+    <div class="form-buttons">
+      <%= r.submit("Delete Reward") %>
+    </div>
+
+  <% end %>
+</div>

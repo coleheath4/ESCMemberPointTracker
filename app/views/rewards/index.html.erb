@@ -10,6 +10,9 @@
 
 <% if @is_admin %>
 <h2>Admin Panel</h2>
+<% if !flash[:notice].nil? %>
+ <h4><%= flash[:notice] %></h4>
+<% end %>
 <table>
     <tr>
         <td>
@@ -45,10 +48,8 @@
             <% if @is_admin %>
             <td><%= Reward.stringify_date(r.created_at) %></td>
             <td><%= Reward.stringify_date(r.updated_at) %></td>
-            <td class="actions">
-                <%= link_to("Edit", edit_reward_path(@user), class: 'action edit') %>
-            </td>
             <% end %>
+            <td><%= link_to("Details", reward_path(r), class: 'action show')%></td>
         </tr>
         <% end %>
     </table>
@@ -78,9 +79,9 @@
             <td><%= Reward.stringify_date(r.created_at) %></td>
             <td><%= Reward.stringify_date(r.updated_at) %></td>
             <td class="actions">
-                <%= link_to("Edit", edit_reward_path(@user), class: 'action edit') %>
             </td>
             <% end %>
+            <td><%= link_to("Details", reward_path(r), class: 'action show')%></td>
         </tr>
         <% end %>
     </table>

@@ -47,7 +47,12 @@ class Reward < ApplicationRecord
   end
   
   def self.stringify_date(r)
-    return String(I18n.t("date.abbr_month_names")[r.month]) + ' ' + String(r.day) + ', ' + String(r.year)
+    # String(I18n.t("date.abbr_month_names")[r.month]) + ' ' + String(r.day) + ', ' + String(r.year)
+    r.strftime("%b %-d, %Y")
+  end
+  
+  def self.stringify_datetime(r)
+    self.stringify_date(r) + ' - ' + r.strftime("%I:%M %p")
   end
   
 end

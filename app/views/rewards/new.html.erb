@@ -1,6 +1,10 @@
 <%= link_to("<< Back to Events", rewards_path, class: 'back-link')%>
 
 <div class="event new">
+    <% if !flash.alert.nil?%>
+        <h4><%= flash.alert %></h4>
+    <% end %>
+
     <h2>Create New Event</h2>
 
     <%= form_for(@reward, :url => rewards_path, :method => "post") do |r|%>
