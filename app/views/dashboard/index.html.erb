@@ -1,12 +1,47 @@
-<h1>Dashboard</h1>
-<h3>Name:</h3>
-<p>
-    <%= current_user.first_name %>
-    <%= current_user.last_name %>
-</p>
-<h3>Number of points:</h3>
-<p>
-    <%= current_user.points %>
-</p>
+<%= stylesheet_link_tag 'dashboard' %>
 
-<%= link_to('Logout', logout_path)%>
+<nav class="navbar navbar-expand-lg navbar-light bg-nav">
+  <a class="navbar-brand" href="#">
+    <i class="far fa-thumbs-up" class="d-inline-block align-top"></i>
+    <%# <i class="fas fa-power-off" class="d-inline-block align-top" alt=""></i> %>
+    ESC-Point Tracker
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to('Logout', logout_path, :class => 'nav-link')%>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Me</li>
+  </ol>
+</nav>
+
+<div class="container">
+    <h1>Dashboard</h1>
+    <div class="row">
+        <table summary="User detail view">
+        <tr>
+            <th>Name:</th>
+            <td>            
+                <%= current_user.first_name %>
+                <%= current_user.last_name %>  
+            </td>
+        </tr>
+        <tr>
+            <th>Points:</th>
+            <td>
+                <%= current_user.points %>
+            </td>
+        </tr>
+      </table>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>
