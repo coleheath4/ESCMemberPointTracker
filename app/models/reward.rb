@@ -13,6 +13,7 @@ class Reward < ApplicationRecord
 
     val = (1.0 * user.points / points_required ) * 100
     val = val.truncate(dec_digits)
+    val = 100 if val > 100
     
     if symbol
       val = String(val) + ' %'
