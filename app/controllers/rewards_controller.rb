@@ -7,21 +7,25 @@ class RewardsController < ApplicationController
   end
 
   def show
+    @is_admin = user_is_admin?
     @user = current_user
     @reward = Reward.find(params[:id])
   end
   
   def eligible
+    @is_admin = user_is_admin?
     @user = current_user
     @rewards = Reward.eligible_list(Reward.sorted, @user)
     @is_admin = user_is_admin?
   end
 
   def new
+    @is_admin = user_is_admin?
     @reward = Reward.new
   end
 
   def create
+    @is_admin = user_is_admin?
     @reward = Reward.new(reward_params)
 
     if @reward.save && @reward.has_all_required_fields?
@@ -35,10 +39,12 @@ class RewardsController < ApplicationController
   end
 
   def edit
+    @is_admin = user_is_admin?
     @reward = Reward.find(params[:id])
   end
 
   def update
+    @is_admin = user_is_admin?
     @reward = Reward.find(params[:id])
     
     if @reward.update_attributes(reward_params)
@@ -51,10 +57,12 @@ class RewardsController < ApplicationController
   end
 
   def delete
+    @is_admin = user_is_admin?
     @reward = Reward.find(params[:id])
   end
 
   def destroy
+    @is_admin = user_is_admin?
     @reward = Reward.find(params[:id])
     reward_name = @reward.name
     if @reward.destroy

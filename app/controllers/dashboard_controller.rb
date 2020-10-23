@@ -1,8 +1,7 @@
 class DashboardController < ApplicationController
   before_action :authenticate
   def index
-    if user_is_admin?
-      
-    end
+    @is_admin = user_is_admin?
+    @user = current_user
   end
 end
