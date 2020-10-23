@@ -44,13 +44,13 @@
             <h4><%= flash.alert %></h4>
         <% end %>
 
-        <h2>Create New Event</h2>
+        <h2>Create New Reward</h2>
 
         <%= form_for(@reward, :url => rewards_path, :method => "post") do |r|%>
             <%= render(:partial => 'form', :locals => {:r => r})%>
 
             <div class="form-button">
-                <%= r.submit('Create Event', :class => 'btn btn-secondary') %>
+                <%= r.submit('Create Event', :class => 'btn btn-primary') %>
             </div>
         <% end %>
     </div>
