@@ -1,3 +1,4 @@
+
 <%= stylesheet_link_tag 'rewards' %>
 <% @reward_title = "All Rewards" %>
 
@@ -30,7 +31,94 @@
   </ol>
 </nav>
 
-<h1>Rewards#index</h1>
-<p>Find me in app/views/rewards/index.html.erb</p>
+<%# User info %>
+<h1>Rewards</h1>
+<h2>My Info</h2>
+<table>
+    <tr>
+        <th>Points: </th>
+        <td><%= @user.points %>
+    </tr>
+</table>
+
+<% if @is_admin %>
+<h2>Admin Panel</h2>
+<% if !flash[:notice].nil? %>
+ <h4><%= flash[:notice] %></h4>
+<% end %>
+<table>
+    <tr>
+        <td>
+            <%= link_to("Add Reward", new_reward_path(), class: 'action new')%>
+        </td>
+    </tr>
+</table>
+<% end %>
+
+<div class="rewards index">
+    <h2>Upcomming Rewards</h2>
+    
+    <table class="listing" summary="Reward list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Points</th>
+            <th>Completion</th>
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+        </tr>
+        <% @future_rewards.each do |r| %>
+        <tr>
+            <td><%= Reward.stringify_date(r.when) %></td>
+            <td><%= r.name %></td>
+            <td><%= r.short_description%></td>
+            <td><%= r.points_required %></td>
+            <td><%= r.percent(@user, dec_digits=0, symbol=true) %></td>
+            <% if @is_admin %>
+            <td><%= Reward.stringify_date(r.created_at) %></td>
+            <td><%= Reward.stringify_date(r.updated_at) %></td>
+            <% end %>
+            <td><%= link_to("Details", reward_path(r), class: 'action show')%></td>
+        </tr>
+        <% end %>
+    </table>
+
+    <h2>Past Rewards</h2>
+    <table class="listing" summary="Reward list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Points</th>
+            <th>Completion</th>
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+        </tr>
+        <% @past_rewards.each do |r| %>
+        <tr>
+            <td><%= Reward.stringify_date(r.when) %></td>
+            <td><%= r.name %></td>
+            <td><%= r.short_description%></td>
+            <td><%= r.points_required %></td>
+            <td><%= r.percent(@user, dec_digits=0, symbol=true) %></td>
+            <% if @is_admin %>
+            <td><%= Reward.stringify_date(r.created_at) %></td>
+            <td><%= Reward.stringify_date(r.updated_at) %></td>
+            <td class="actions">
+            </td>
+            <% end %>
+            <td><%= link_to("Details", reward_path(r), class: 'action show')%></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
 
 <script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>
+
