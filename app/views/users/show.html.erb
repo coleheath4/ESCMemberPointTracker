@@ -1,40 +1,94 @@
-<%= link_to("<< Back to List", users_path, :class => 'back-link') %>
+<%= stylesheet_link_tag 'users' %>
 
-<div class="users show">
-  <h2>Member Details</h2>
+<nav class="navbar navbar-expand-lg navbar-light bg-nav">
+  <a class="navbar-brand" href="#">
+    <i class="far fa-thumbs-up" class="d-inline-block align-top"></i>
+    <%# <i class="fas fa-power-off" class="d-inline-block align-top" alt=""></i> %>
+    ESC-Point Tracker
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Users</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to("Rewards", rewards_path, :class => 'nav-link') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Logout', logout_path, :class => 'nav-link')%>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= link_to("Users", users_path, :class => 'breadcrumb-item') %>
+    <%# <li class="breadcrumb-item" aria-current="page">Users</li> %>
+    <li class="breadcrumb-item active" aria-current="page">Details</li>
+  </ol>
+  
+</nav>
 
-  <table summary="User detail view">
-    <tr>
-      <th>First Name</th>
-      <td><%= @user.first_name %></td>
-    </tr>
-    <tr>
-      <th>Last Name</th>
-      <td><%= @user.last_name %></td>
-    </tr>
-    <tr>
-      <th>Username</th>
-      <td><%= @user.username %></td>
-    </tr>
-    <tr>
-      <th>Email</th>
-      <td><%= @user.email %></td>
-    </tr>
-    <tr>
-      <th>Admin</th>
-      <td><%= @user.is_admin %></td>
-    </tr>
-    <tr>
-      <th>Points</th>
-      <td><%= @user.points %></td>
-    </tr>
-    <tr>
-      <th>Events</th>
-      <td><%= @user.events %></td>
-    </tr>
-  </table>
+<div class="container">
+  <div class="row">
+    <h2>Member Details</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+        <%= image_tag("profile.png", :class => "img-fluid profile-picture rounded-circle") %>
+    </div>
+    <div class="col-md-8">
+      <table summary="User detail view">
+        <tr>
+          <th>Username</th>
+          <td><%= @user.username %></td>
+        </tr>
+        <tr>
+          <th>First Name</th>
+          <td><%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th>Last Name</th>
+          <td><%= @user.last_name %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+        <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>Admin</th>
+          <td><%= @user.is_admin %></td>
+        </tr>
+        <tr>
+          <th>Points</th>
+          <td><%= @user.points %></td>
+        </tr>
+        <tr>
+          <th>Events</th>
+          <td><%= @user.events %></td>
+        </tr>
+      </table>
 
-  <%= link_to("Edit User", edit_user_path(@user), :class => 'action edit') %>
-  <%= link_to("Delete User", delete_user_path(@user), :class => 'action delete') %>
+      <%= link_to("Edit User", edit_user_path(@user), :class => 'action edit btn btn-secondary') %>
+
+      <%= link_to("Delete User", delete_user_path(@user), :class => 'action delete btn btn-secondary') %>
+    </div>
+  </div>
 
 </div>
+
+<%# <%= link_to("<< Back to List", users_path, :class => 'back-link') %>
+
+<div class="container">
+  <div class="row">
+    <div class="users show">
+
+
+    </div>    
+  </div>  
+</div>
+
+<script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>

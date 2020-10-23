@@ -1,52 +1,47 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<%= stylesheet_link_tag 'register' %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col" ></div>
-    <div class="col">
-        <h1>Register</h1>
 
-<div class="register">
-    <%= form_for(@user, url: attempt_register_path, method: :post) do |u|%>
-    <%# <%= u.hidden_field :uid %> 
-    <%# <%= u.hidden_field :provider %> 
-    <table>
-        <tr>
-            <td><%= label_tag(:username) %></td>
-            <td><%= text_field_tag(:username, params[:username]) %></td>
-        </tr>
-        <tr>
-            <td><%= label_tag(:password) %> </td>
-            <td><%= password_field_tag(:password) %> </td>
-        </tr>
-        <tr>
-            <td><%= label_tag(:password_confirm) %></td>
-            <td><%= password_field_tag(:password_confirm) %></td>
-        </tr>
-        <tr>
-            <td><%= label_tag(:email) %></td>
-            <td><%= u.email_field(:email) %></td>
-        </tr>
-             <tr>
-            <td><%= label_tag(:first_name) %></td>
-            <td><%= u.text_field(:first_name) %></td>
-        </tr>
-        <tr>
-            <td><%= label_tag(:last_name) %></td>
-            <td><%= u.text_field(:last_name) %></td>
-        </tr>  
-        <tr>
-          <td>&nbsp;</td>
-          <td><%= submit_tag("Register") %></td>
-        </tr>
-    </table>
-    <% end %>
-</div>
-    </div>
-    <div class="col"></div>
-  </div>
-</div>
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="row main-content bg-success text-center">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo"><h2><span class="far fa-thumbs-up"></span></h2></span>
+				<h4 class="company_title">ESC Member Point Tracker</h4>
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+						<h2>Member Registration</h2>
+					</div>
+					<div class="row">
+                        <%= form_for(@user, url: attempt_register_path, method: :post) do |u|%>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                        <div class="row">
+                            <%= text_field_tag(:username, params[:username], placeholder: 'Username' , class: 'form__input') %>
+                        </div>
+                        <div class="row">
+                            <%= password_field_tag(:password, '', placeholder: 'Password', class: 'form__input') %> 
+                        </div>
+                        <div class="row">
+                            <%= password_field_tag(:password_confirm, '', placeholder: 'Password Confirm', class: 'form__input') %>
+                        </div>
+                        <div class="row">
+                            <%= u.email_field(:email, placeholder: 'Email', class: 'form__input') %>
+                        </div>                        
+                        <div class="row">
+                            <%= u.text_field(:first_name, placeholder: 'First Name', class: 'form__input') %>
+                        </div>                        
+                        <div class="row">
+                            <%= u.text_field(:last_name, placeholder: 'Last Name', class: 'form__input') %>
+                        </div>
+                        <div class="row">
+                            <%= submit_tag("Register", class: 'btn') %>
+                        </div>
+                        <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>

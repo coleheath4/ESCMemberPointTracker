@@ -1,3 +1,36 @@
+
+<%= stylesheet_link_tag 'rewards' %>
+<% @reward_title = "All Rewards" %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-nav">
+  <a class="navbar-brand" href="#">
+    <i class="far fa-thumbs-up" class="d-inline-block align-top"></i>
+    <%# <i class="fas fa-power-off" class="d-inline-block align-top" alt=""></i> %>
+    ESC-Point Tracker
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to("Users", users_path, :class => 'nav-link') %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Rewards</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Logout', logout_path, :class => 'nav-link')%>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Rewards</li>
+  </ol>
+</nav>
+
 <%# User info %>
 <h1>Rewards</h1>
 <h2>My Info</h2>
@@ -86,3 +119,6 @@
         <% end %>
     </table>
 </div>
+
+<script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>
+
