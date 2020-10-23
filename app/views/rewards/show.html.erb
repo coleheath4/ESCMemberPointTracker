@@ -1,2 +1,25 @@
-<h1>Rewards</h1>
-<p>Find me in app/views/rewards/show.html.erb</p>
+<%= link_to('<< Back to Rewards', rewards_path, class: 'back-link') %>
+
+<% if !flash[:notice].nil? %>
+<h4><%= flash[:notice] %></h4>
+<% end %>
+
+<div class='show reward'>
+    <h2><%= @reward.name%></h2>
+    <% if @user.is_admin? %>
+    <%= link_to("Edit", edit_reward_path(@reward), class: 'action edit') %>
+    <%= link_to("Delete", delete_reward_path(@reward), class: 'action delete') %>
+    <% end %>
+    <table>
+        <tr>
+            <th>When:</th>
+            <td><%= Reward.stringify_datetime(@reward.when) %></td>
+        </tr>
+        <tr>
+            <th>Points Required: </th>
+            <td><%= @reward.points_required %></td>
+        </tr>
+    </table>
+    <h4>Description</h4>
+    <p><%= @reward.description %></p>
+</div>

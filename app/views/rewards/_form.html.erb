@@ -1,0 +1,18 @@
+<table summary="User form fields">
+    <tr>
+    <th>Event Name</th>
+        <td><%= r.text_field(:name, required: true) %></td>
+    </tr>
+    <tr>
+        <th>Description Name</th>
+        <td><%= r.text_area(:description) %></td>
+    </tr>
+    <tr>
+        <th>Points Required</th>
+        <td><%= r.number_field(:points_required, required: true) %></td>
+    </tr>
+    <tr>
+        <th>When</th>
+        <td><%= r.datetime_field(:when, required: true) %></td>
+    </tr>
+</table>

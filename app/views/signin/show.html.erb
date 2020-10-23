@@ -1,15 +1,40 @@
 <%= stylesheet_link_tag 'signin' %>
 
-<div class="login main">
-<p class='sign top'>Sign in</p>
-<p class=sign>ESC Member Point Tracker </p>
-  <%= form_tag(default_login_path, :method => :post, class: 'form1') do %>
-      <td><%= text_field_tag(:username, params[:username], placeholder: 'username') %></td>
-      <td><%= password_field_tag(:password, '', placeholder: 'password') %></td>
-      <td><%= submit_tag("Log In", class: 'submit center') %></td>
-  <% end %>
-  <%# <td><%= link_to('Sign in with Google', google_login_path, class: 'center') %> <%#</td> %>
-  <br>
-  <td><%= link_to('Register', register_path, class: 'submit submit_register') %></td>
+
+<div class="container">
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="row main-content bg-success text-center">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo"><h2><span class="far fa-thumbs-up"></span></h2></span>
+				<h4 class="company_title">ESC Member Point Tracker</h4>
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+						<h2>Log In</h2>
+					</div>
+					<div class="row">
+                        <%= form_tag(default_login_path, :method => :post, class: 'form-group') do %>
+							<div class="row">
+                                <%= text_field_tag(:username, params[:username], placeholder: 'Username', class: 'form__input') %>
+							</div>
+							<div class="row">
+								<!-- <span class="fa fa-lock"></span> -->
+                                <%= password_field_tag(:password, '', placeholder: 'Password', class: 'form__input') %>
+							</div>
+							<div class="row">
+                                <%= submit_tag("Log In", class: 'btn') %>
+							</div>
+                        <% end %>
+					</div>
+					<div class="row">
+                        Don't have an account? <%= link_to('Register Here', register_path) %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
+<script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>
