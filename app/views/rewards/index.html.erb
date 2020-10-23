@@ -39,6 +39,7 @@
 <%# User info %>
 <div class="container">
   <h1>Rewards</h1>
+  <br>
   <h3>My Info</h3>
   <table>
     <tr>
@@ -47,18 +48,22 @@
     </tr>
   </table>
 
+  <br>
+
   <% if @is_admin %>
-  <h2>Admin Panel</h2>
+  <%# <h2>Admin Panel</h2> %>
   <% if !flash[:notice].nil? %>
   <h4><%= flash[:notice] %></h4>
   <% end %>
   <table>
     <tr>
         <td>
-            <%= link_to("Add Reward", new_reward_path(), class: 'action new')%>
         </td>
     </tr>
   </table>
+  <div class="float-right">
+        <button type="button" class="btn btn-primary" onclick="location.href='<%=new_reward_path()%>'">Add Reward</button>
+  </div>
   <% end %>
 
   <div class="rewards index">
@@ -71,11 +76,13 @@
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Completion</th>
+          <th scope="col">Points</th>
 
           <% if @is_admin %>
           <th scope="col">Created At</th>
           <th scope="col">Last Updated</th>
           <% end %>
+          <th></th>   <%# This is needed for styling purposes. Table looks weird without this%>
         </tr>
       </thead>
       <tbody>
@@ -96,8 +103,9 @@
       </tbody>
     </table>
 
-    <h3>Past Rewards</h3>
+    <br>
 
+    <h3>Past Rewards</h3>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -105,11 +113,13 @@
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Completion</th>
+          <th scope="col">Points</th>
 
           <% if @is_admin %>
           <th scope="col">Created At</th>
           <th scope="col">Last Updated</th>
           <% end %>
+          <th></th>   <%# This is needed for styling purposes. Table looks weird without this%>
         </tr>
       </thead>
       <tbody>
