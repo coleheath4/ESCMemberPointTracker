@@ -26,6 +26,9 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <%= link_to("Users", users_path, :class => 'breadcrumb-item') %>
+    <li class="breadcrumb-item active" aria-current="page">
+      <%= link_to("Details", user_path(@user), :class => 'breadcrumb-item') %>
+    </li>
     <li class="breadcrumb-item active" aria-current="page">Delete User</li>
   </ol>
   
