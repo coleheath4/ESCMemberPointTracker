@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'signin#show'
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'signin', to: 'signin#show', as: 'signin'
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'home', to: 'home#show'
+  get 'rewards', to: 'rewards#show', as: 'rewards'
+  get 'events', to: 'events#show', as: 'events'
   # get 'me', to: 'me#show', as: 'me'
   
   post 'default_login', to: 'sessions#default_create', as: 'default_login'

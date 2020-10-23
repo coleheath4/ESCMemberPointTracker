@@ -1,11 +1,6 @@
 class RegisterController < ApplicationController
   # default show
   def show
-    # if user is signed in, redirect to page about user
-    if user_signed_in?
-      redirect_to(dashboard_path)
-    end
-
     @user ||= User.new
 
     keys = [:first_name, :last_name, :email, :uid, :provider]
@@ -15,6 +10,11 @@ class RegisterController < ApplicationController
         @user[k] = session[k]
         puts @user[k]
       end
+    end
+
+    # if user is signed in, redirect to page about user
+    if user_signed_in?
+      redirect_to(dashboard_path)
     end
     
     # if session.has_key?(:email)
