@@ -13,10 +13,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
+    <% if @is_admin %>
       <li class="nav-item">
         <%= link_to("Users", users_path, :class => 'nav-link') %>
       </li>
-      <li class="nav-item">
+    <% end %>
+  <li class="nav-item">
         <a class="nav-link" href="#">Rewards</a>
       </li>
       <li class="nav-item">
