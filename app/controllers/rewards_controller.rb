@@ -10,6 +10,12 @@ class RewardsController < ApplicationController
     @user = current_user
     @reward = Reward.find(params[:id])
   end
+  
+  def eligible
+    @user = current_user
+    @rewards = Reward.eligible_list(Reward.sorted, @user)
+    @is_admin = user_is_admin?
+  end
 
   def new
     @reward = Reward.new

@@ -8,5 +8,15 @@
 <p>
     <%= current_user.points %>
 </p>
+<%= link_to('View Eligible Rewards', eligible_rewards_path)%>
+<br>
+<%= link_to('View All Rewards', rewards_path)%>
+<br>
+<%= link_to('View Events', events_path)%>
+<br>
+<% if current_user.is_admin %>
+  <%= link_to('View All Users', users_path) %>
+  <br>
+<% end %>
 
 <%= link_to('Logout', logout_path)%>
