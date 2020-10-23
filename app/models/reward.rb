@@ -46,6 +46,19 @@ class Reward < ApplicationRecord
     
     return future_rewards, past_rewards
   end
+
+  def self.eligible_list(rewards=nil, user)
+    if rewards.nil?
+      rewards = Rewards.all
+    end
+    eligible_rewards = []
+    rewards.each do |r|
+      if (r.points_required <= user.points)
+        eligible_rewards << r
+      end
+    end
+    return eligible_rewards
+  end
   
   def self.stringify_date(r)
     # String(I18n.t("date.abbr_month_names")[r.month]) + ' ' + String(r.day) + ', ' + String(r.year)

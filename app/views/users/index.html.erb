@@ -31,33 +31,30 @@
   </ol>
 </nav>
 
-<div class="container">
-  <div class="books index">
-    <h2>Members</h2>
-
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Points</th>
-          <th scope="col">Info</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.points %></td>
-          <td class="actions">
-            <%= link_to("Details", user_path(user), :class => 'action show') %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+<div>
+  <table class="listing" summary="User list">
+    <tr class="header">
+      <%# <th>First Name</th> %>
+      <%# <th>Last Name</th> %>
+      <th>Name</th>
+      <th />
+      <th>Points</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <%# <td><%= user.first_name ></td> %>
+      <%# <td><%= user.last_name ></td> %>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.points %></td>
+      <td class="actions">
+        <%= link_to("Details", user_path(user), :class => 'action show') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= link_to("View Your Dashboard", dashboard_path) %>
 </div>
 
 <script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>
