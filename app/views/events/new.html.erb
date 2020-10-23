@@ -1,2 +1,17 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<%= link_to("<< Back to Events", events_path, class: 'back-link')%>
+
+<div class="event new">
+    <% if !flash.alert.nil?%>
+        <h4><%= flash.alert %></h4>
+    <% end %>
+
+    <h2>Create New Event</h2>
+
+    <%= form_for(@event, :url => events_path, :method => "post") do |e|%>
+        <%= render(:partial => 'form', :locals => {:e => e})%>
+
+        <div class="form-button">
+            <%= e.submit('Create Event') %>
+        </div>
+    <% end %>
+</div>

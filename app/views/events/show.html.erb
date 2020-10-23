@@ -1,2 +1,25 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<%= link_to('<< Back to Events', events_path, class: 'back-link') %>
+
+<% if !flash[:notice].nil? %>
+<h4><%= flash[:notice] %></h4>
+<% end %>
+
+<div class='show event'>
+    <h2><%= @event.name%></h2>
+    <% if @user.is_admin? %>
+    <%= link_to("Edit", edit_event_path(@event), class: 'action edit') %>
+    <%= link_to("Delete", delete_event_path(@event), class: 'action delete') %>
+    <% end %>
+    <table>
+        <tr>
+            <th>When:</th>
+            <td><%= Event.stringify_datetime(@event.event_date) %></td>
+        </tr>
+        <tr>
+            <th>Point Value: </th>
+            <td><%= @event.point_value %></td>
+        </tr>
+    </table>
+    <h4>Description</h4>
+    <p><%= @event.description %></p>
+</div>
