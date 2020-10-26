@@ -1,0 +1,22 @@
+<table summary="Event form fields">
+    <tr>
+    <th>Event Name</th>
+        <td><%= e.text_field(:name, required: true) %></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td><%= e.text_area(:description) %></td>
+    </tr>
+    <tr>
+        <th>Host</th>
+        <td><%= e.text_field(:host, required: true) %></td>
+    </tr>
+    <tr>
+        <th>Point Value</th>
+        <td><%= e.number_field(:point_value, required: true) %></td>
+    </tr>
+    <tr>
+        <th>Event Date</th>
+        <td><%= e.datetime_field(:event_date, required: true) %></td>
+    </tr>
+</table>

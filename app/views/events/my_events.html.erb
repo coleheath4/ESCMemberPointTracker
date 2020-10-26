@@ -1,0 +1,40 @@
+<%= link_to('<< Back to Dashboard', dashboard_path, class: 'back-link') %>
+
+<%# User info %>
+<h1>My Events</h1>
+
+
+<div class="my events">
+    <h2>My Events</h2>
+    
+    <table class="listing" summary="Event list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Host</th>
+            <th>Points Worth</th>
+            
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+        </tr>
+        <% @events.each do |e| %>
+        <tr>
+            <td><%= Event.stringify_date(e.event_date) %></td>
+            <td><%= e.name %></td>
+            <td><%= e.short_description%></td>
+            <td><%= e.host%></td>
+            <td><%= e.point_value %></td>
+            <% if @is_admin %>
+            <td><%= Event.stringify_date(e.created_at) %></td>
+            <td><%= Event.stringify_date(e.updated_at) %></td>
+            <% end %>
+            <td><%= link_to("Details", event_path(e), class: 'action show')%></td>
+        </tr>
+        <% end %>
+    </table>
+    
+</div>
