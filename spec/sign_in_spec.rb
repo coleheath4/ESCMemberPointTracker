@@ -80,7 +80,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
    
     context 'with an admin account' do
       
-      it 'admin will have access to the users page', focus: true do
+      it 'admin will have access to the users page' do
         # make user account
         u = User.new
         u.username = 'usn'
@@ -304,5 +304,88 @@ RSpec.describe 'ESC Point Tracker', type: :system do
   #     end
   #   end
   # end
+
+  describe 'Rewards page' do
+    context 'when there is a reward' do
+      
+      
+      it 'can go to the rewards page' do
+        u = User.new
+        u.username = 'usn'
+        u.password = 'pass'
+        u.email = 'test@email.com'
+        u.first_name = 'First'
+        u.last_name = 'Last'
+        u.save!
+
+        visit signin_path
+        fill_in('username', with: u.username)
+        fill_in('password', with: 'pass')
+        click_button('Log In')
+
+        visit rewards_path
+        sleep(1)
+        expect(page).to have_content('Upcoming Rewards')
+      end
+    end
+
+    context 'as an admin', focus: true do
+      it 'has the button to add a reward' do
+        admin = create_default_admin_account
+        sign_in(admin)
+        visit rewards_path
+        sleep(1)
+        expect(find_button('Add Reward')).to have_text('Add Reward')
+        sleep(3)
+      end
+    end
+
+    context 'as a regular user', focus: false do
+      it 'cannot have access to the add rewards button' do
+        u = create_default_user_account()
+        sign_in(u)
+
+        sleep(1)
+        visit rewards_path
+        expect(page).not_to have_content("Add Reward")
+
+        sleep(3)
+      end
+    end
+  end
   
+end
+
+def sign_in(account)
+  visit signin_path
+  fill_in('username', with: account.username)
+  fill_in('password', with: 'pass')
+  click_button('Log In')
+end
+
+def log_out
+  visit logout_path
+end
+
+def create_default_user_account
+  u = User.new
+  u.username = 'usn'
+  u.password = 'pass'
+  u.email = 'test@email.com'
+  u.first_name = 'First'
+  u.last_name = 'Last'
+  u.save!
+  return u
+end
+
+def create_default_admin_account
+  u = User.new
+  u.username = 'admin'
+  u.password = 'pass'
+  u.email = 'admin@esc.com'
+  u.first_name = 'Admin'
+  u.last_name = 'Istrator'
+  u.is_admin = true
+  u.save!
+  return u
 end
