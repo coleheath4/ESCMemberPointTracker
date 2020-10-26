@@ -1,25 +1,65 @@
-<%= link_to('<< Back to Rewards', rewards_path, class: 'back-link') %>
+<%= stylesheet_link_tag 'rewards' %>
 
-<% if !flash[:notice].nil? %>
-<h4><%= flash[:notice] %></h4>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-nav">
+  <a class="navbar-brand" href="#">
+    <i class="far fa-thumbs-up" class="d-inline-block align-top"></i>
+    <%# <i class="fas fa-power-off" class="d-inline-block align-top" alt=""></i> %>
+    ESC-Point Tracker
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to("Me", dashboard_path, :class => 'nav-link') %>
+      </li>
+      <% if @is_admin %>
+      <li class="nav-item">
+        <%= link_to("Users", users_path, :class => 'nav-link') %>
+      </li>
+      <% end %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Rewards</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Logout', logout_path, :class => 'nav-link')%>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= link_to("Rewards", rewards_path, :class => 'breadcrumb-item') %>
+    <li class="breadcrumb-item active" aria-current="page">Details</li>
+  </ol>
+</nav>
 
-<div class='show reward'>
-    <h2><%= @reward.name%></h2>
-    <% if @user.is_admin? %>
-    <%= link_to("Edit", edit_reward_path(@reward), class: 'action edit') %>
-    <%= link_to("Delete", delete_reward_path(@reward), class: 'action delete') %>
+
+<div class="container">
+    <% if !flash[:notice].nil? %>
+        <h4><%= flash[:notice] %></h4>
     <% end %>
-    <table>
-        <tr>
-            <th>When:</th>
-            <td><%= Reward.stringify_datetime(@reward.when) %></td>
-        </tr>
-        <tr>
-            <th>Points Required: </th>
-            <td><%= @reward.points_required %></td>
-        </tr>
-    </table>
-    <h4>Description</h4>
-    <p><%= @reward.description %></p>
+
+    <div class='show reward'>
+        <h2><%= @reward.name%></h2>
+        <table>
+            <tr>
+                <th>When:</th>
+                <td><%= Reward.stringify_datetime(@reward.when) %></td>
+            </tr>
+            <tr>
+                <th>Points Required: </th>
+                <td><%= @reward.points_required %></td>
+            </tr>
+            <tr>
+                <th>Description: </th>
+                <td><%= @reward.description %></td>
+            </tr>
+        </table>
+        <% if @user.is_admin? %>
+            <%= link_to("Edit", edit_reward_path(@reward), class: 'btn btn-secondary') %>
+            <%= link_to("Delete", delete_reward_path(@reward), class: 'btn btn-danger') %>
+        <% end %>
+    </div>
 </div>
