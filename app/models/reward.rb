@@ -12,7 +12,7 @@ class Reward < ApplicationRecord
     return '-' if user.points.nil? || points_required.nil?
 
     val = (1.0 * user.points / points_required ) * 100
-    val = val.truncate(dec_digits)
+    val = (val.nan? || val.infinite?) ? 0 : val.truncate(dec_digits)
     val = 100 if val > 100
     
     if symbol
