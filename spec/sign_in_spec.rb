@@ -4,7 +4,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
   describe 'sign in page' do
     it 'shows the right content' do
       visit signin_path
-      expect(page.body).to have_content('Sign in')
+      expect(page.body).to have_content("Don't have an account?")
       sleep(5)
     end
   end
@@ -50,10 +50,10 @@ RSpec.describe 'ESC Point Tracker', type: :system do
     it 'malicious user cannot login without an account' do
         visit signin_path
         click_button('Log In')
-        expect(page.body).to have_content('Sign in')
+        expect(page.body).to have_content("Don't have an account?")
         sleep(5)
         click_button('Log In')
-        expect(page.body).to have_content('Sign in')
+        expect(page.body).to have_content("Don't have an account?")
         sleep(5)
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
    
     context 'with an admin account' do
       
-      it 'admin will have access to the users page' do
+      it 'admin will have access to the users page', focus: true do
         # make user account
         u = User.new
         u.username = 'usn'
@@ -98,11 +98,12 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         click_button('Log In')
         
         visit dashboard_path
+        click_link('Users')
         sleep(2)
         expect(current_path).to eql users_path
       end
 
-      it 'admin will be redirected to the users page if admin tries to access the dashboard'do
+      it 'admin will be redirected to the dashboard page if admin tries to access the dashboard'do
         # make user account
         u = User.new
         u.username = 'usn'
@@ -120,7 +121,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
 
         visit dashboard_path
         sleep(3)
-        expect(current_path).to eql users_path
+        expect(current_path).to eql dashboard_path
       end
 
       it 'admin can see a list of users in the organization' do
@@ -168,7 +169,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(5)
       end
 
-      it 'can view a user\'s account info', focus: true do
+      it 'can view a user\'s account info' do
         # make user account
         admin = User.new
         admin.username = 'usn'
