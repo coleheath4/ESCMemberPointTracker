@@ -80,16 +80,9 @@ RSpec.describe 'ESC Point Tracker', type: :system do
    
     context 'with an admin account' do
       
-      it 'admin will have access to the users page' do
+      it 'admin will have access to the users page'do
         # make user account
-        u = User.new
-        u.username = 'usn'
-        u.password = 'pass'
-        u.email = 'test@email.com'
-        u.first_name = 'First'
-        u.last_name = 'Last'
-        u.is_admin = true
-        u.save!
+        u = create_default_admin_account
         
         # user signs in
         visit signin_path
@@ -350,6 +343,57 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         expect(page).not_to have_content("Add Reward")
 
         sleep(3)
+      end
+
+      it 'can see the number of points I have in the rewards page' do
+        u = create_default_user_account
+        u.points = 30
+        u.save!
+        sign_in(u)
+
+        visit rewards_path
+        expect(page).to have_text('Points: 30')
+      end
+
+      it 'can see the percentage I am about to complete for a reward' do
+        u = create_default_user_account()
+        u.points = 10
+        u.save!
+        sign_in(u)
+
+        reward = Reward.new
+        reward.name = 'Test Reward'
+        reward.description = "This is the description"
+        reward.points_required = 20
+        reward.when = Time.now + 3.months
+        reward.save!
+
+        visit rewards_path
+        expect(page).to have_content('Test Reward')
+        expect(page).to have_text('50 %')
+      end
+
+      it 'can navigate to rewards from different pages' do
+        u = create_default_user_account()
+        sign_in(u)
+
+        visit dashboard_path
+        click_on 'Rewards'
+        expect(current_path).to eql rewards_path
+
+        visit rewards_path
+        click_on 'Rewards'
+        expect(current_path).to eql rewards_path
+
+      end
+
+      it 'cannot access the page to create new rewards', hello: true do
+        u = create_default_user_account
+        sign_in(u)
+        
+        visit new_reward_path
+        sleep(1.second)
+        expect(current_path).not_to eql new_reward_path
       end
     end
   end
