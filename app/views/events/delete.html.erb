@@ -1,2 +1,17 @@
-<h1>Events#delete</h1>
-<p>Find me in app/views/events/delete.html.erb</p>
+<%= link_to("<< Back to Event Details", event_path(@event), :class => 'back-link') %>
+
+<div class="events delete">
+  <h2>Delete Event</h2>
+
+  <%= form_for(@event, :method => 'delete') do |e| %>
+
+    <p>Are you sure you want to permanently delete the event?</p>
+
+    <p class="reference-name"><%= e.object.name%></p>
+
+    <div class="form-buttons">
+      <%= e.submit("Delete Event") %>
+    </div>
+
+  <% end %>
+</div>

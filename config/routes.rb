@@ -9,13 +9,15 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'home', to: 'home#show'
-  get 'rewards', to: 'rewards#show', as: 'rewards'
-  get 'events', to: 'events#show', as: 'events'
+  get 'rewards', to: 'rewards#index', as: 'rewards'
+  get 'eligible_rewards', to:'rewards#eligible', as: 'eligible_rewards'
+  get 'events', to: 'events#index', as: 'events'
+  get 'my_events', to: 'events#my_events', as: 'my_events'
   # get 'me', to: 'me#show', as: 'me'
-  
+
   post 'default_login', to: 'sessions#default_create', as: 'default_login'
   post 'attempt_register', to: 'sessions#register_create', as: 'attempt_register'
-  
+
   resources :users do
     member do
       get :delete

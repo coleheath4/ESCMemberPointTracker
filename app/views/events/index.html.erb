@@ -1,2 +1,90 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<%= link_to('<< Back to Dashboard', dashboard_path, class: 'back-link') %>
+
+<%# User info %>
+<h1>Events</h1>
+<h2>My Info</h2>
+<table>
+    <tr>
+        <th>Points: </th>
+        <td><%= @user.points %>
+    </tr>
+</table>
+
+<% if @is_admin %>
+<h2>Admin Panel</h2>
+<% if !flash[:notice].nil? %>
+ <h4><%= flash[:notice] %></h4>
+<% end %>
+<table>
+    <tr>
+        <td>
+            <%= link_to("Add Event", new_event_path(), class: 'action new')%>
+        </td>
+    </tr>
+</table>
+<% end %>
+
+<div class="events index">
+    <h2>Upcoming Events</h2>
+    
+    <table class="listing" summary="Event list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Host</th>
+            <th>Points Worth</th>
+            
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+        </tr>
+        <% @future_events.each do |e| %>
+        <tr>
+            <td><%= Event.stringify_date(e.event_date) %></td>
+            <td><%= e.name %></td>
+            <td><%= e.short_description%></td>
+            <td><%= e.host%></td>
+            <td><%= e.point_value %></td>
+            <% if @is_admin %>
+            <td><%= Event.stringify_date(e.created_at) %></td>
+            <td><%= Event.stringify_date(e.updated_at) %></td>
+            <% end %>
+            <td><%= link_to("Details", event_path(e), class: 'action show')%></td>
+        </tr>
+        <% end %>
+    </table>
+
+    <h2>Past Rewards</h2>
+    <table class="listing" summary="Event list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Host</th>
+            <th>Points Worth</th>
+            
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+        </tr>
+        <% @past_events.each do |e| %>
+        <tr>
+            <td><%= Event.stringify_date(e.event_date) %></td>
+            <td><%= e.name %></td>
+            <td><%= e.short_description%></td>
+            <td><%= e.host%></td>
+            <td><%= e.point_value %></td>
+            <% if @is_admin %>
+            <td><%= Event.stringify_date(e.created_at) %></td>
+            <td><%= Event.stringify_date(e.updated_at) %></td>
+            <% end %>
+            <td><%= link_to("Details", event_path(e), class: 'action show')%></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
