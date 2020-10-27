@@ -10,43 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_003824) do
-
+ActiveRecord::Schema.define(version: 20_200_923_003_824) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "host"
-    t.integer "point_value"
-    t.datetime "event_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'events', force: :cascade do |t|
+    t.string 'name'
+    t.string 'description'
+    t.string 'host'
+    t.integer 'point_value'
+    t.datetime 'event_date'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "rewards", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.integer "points_required"
-    t.datetime "when"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'rewards', force: :cascade do |t|
+    t.string 'name'
+    t.string 'description'
+    t.integer 'points_required'
+    t.datetime 'when'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "username"
-    t.boolean "is_admin"
-    t.integer "points"
-    t.integer "events", array: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "uid"
-    t.string "provider"
-    t.string "password_digest"
+  create_table 'users', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'email'
+    t.string 'username'
+    t.boolean 'is_admin'
+    t.integer 'points'
+    t.integer 'events', array: true
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'uid'
+    t.string 'provider'
+    t.string 'password_digest'
   end
-
 end
