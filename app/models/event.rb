@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   scope :sorted, -> { order('"event_date" ASC') }
 
@@ -9,7 +11,7 @@ class Event < ApplicationRecord
     return '' if description.nil?
     return description if description.length <= max_chars
 
-    description[0..max_chars - 3] + '...'
+    "#{description[0..max_chars - 3]}..."
   end
 
   # Returns two objects, the first an array of future rewards and
@@ -46,6 +48,6 @@ class Event < ApplicationRecord
   end
 
   def self.stringify_datetime(e)
-    stringify_date(e) + ' - ' + e.strftime('%I:%M %p')
+    "#{stringify_date(e)} - #{e.strftime('%I:%M %p')}"
   end
 end

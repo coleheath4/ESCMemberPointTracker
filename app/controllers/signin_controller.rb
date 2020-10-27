@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SigninController < ApplicationController
   def show
     if user_signed_in?

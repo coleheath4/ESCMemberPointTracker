@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RewardsController < ApplicationController
   def index
     @future_rewards, @past_rewards = Reward.all_split(Reward.sorted)
@@ -74,7 +76,7 @@ class RewardsController < ApplicationController
     @reward = Reward.find(params[:id])
     reward_name = @reward.name
     if @reward.destroy
-      flash[:notice] = 'Reward ' + reward_name + ' destroyed successfully'
+      flash[:notice] = "Reward #{reward_name} destroyed successfully"
       redirect_to(rewards_path)
     end
   end

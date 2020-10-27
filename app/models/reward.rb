@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reward < ApplicationRecord
   scope :sorted, -> { order('"when" ASC') }
 
@@ -5,7 +7,7 @@ class Reward < ApplicationRecord
     return '' if description.nil?
     return description if description.length <= max_chars
 
-    description[0..max_chars - 3] + '...'
+    "#{description[0..max_chars - 3]}..."
   end
 
   def percent(user, dec_digits = 0, symbol = false)
@@ -15,7 +17,7 @@ class Reward < ApplicationRecord
     val = val.nan? || val.infinite? ? 0 : val.truncate(dec_digits)
     val = 100 if val > 100
 
-    val = String(val) + ' %' if symbol
+    val = "#{String(val)} %" if symbol
 
     val
   end
@@ -58,6 +60,6 @@ class Reward < ApplicationRecord
   end
 
   def self.stringify_datetime(r)
-    stringify_date(r) + ' - ' + r.strftime('%I:%M %p')
+    "#{stringify_date(r)} - #{r.strftime('%I:%M %p')}"
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :description, :host, :point_value, :event_date)
@@ -60,7 +62,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     event_name = @event.name
     if @event.destroy
-      flash[:notice] = 'Event ' + event_name + ' destroyed successfully'
+      flash[:notice] = "Event #{event_name} destroyed successfully"
       redirect_to(events_path)
     end
   end

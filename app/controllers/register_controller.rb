@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RegisterController < ApplicationController
   # default show
   def show
@@ -6,7 +8,7 @@ class RegisterController < ApplicationController
     keys = %i[first_name last_name email uid provider]
 
     keys.each do |k|
-      if session.has_key?(k)
+      if session.key?(k)
         @user[k] = session[k]
         puts @user[k]
       end
