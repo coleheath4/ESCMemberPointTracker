@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'signin#show'
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'signin', to: 'signin#show', as: 'signin'
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'home', to: 'home#show'
   get 'rewards', to: 'rewards#index', as: 'rewards'
-  get 'eligible_rewards', to:'rewards#eligible', as: 'eligible_rewards'
+  get 'eligible_rewards', to: 'rewards#eligible', as: 'eligible_rewards'
   get 'events', to: 'events#index', as: 'events'
   get 'my_events', to: 'events#my_events', as: 'my_events'
   # get 'me', to: 'me#show', as: 'me'

@@ -34,7 +34,7 @@ gem 'omniauth-google-oauth2'
 # Bcrypt
 gem 'bcrypt'
 
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'sprockets-rails', require: 'sprockets/railtie'
 
 gem 'bootstrap', '~> 4.5', '>= 4.5.2'
 
@@ -42,9 +42,9 @@ gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
-    # The RSpec testing framework
+  # The RSpec testing framework
   gem 'rspec-rails'
 
   # The following gems aids with the nuts and bolts
@@ -65,11 +65,11 @@ group :test do
   gem 'webdrivers'
 
   # Checking cookies
-  gem "show_me_the_cookies"
+  gem 'show_me_the_cookies'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Simplecov
 gem 'simplecov', require: false, group: :test

@@ -3,7 +3,7 @@ class RegisterController < ApplicationController
   def show
     @user ||= User.new
 
-    keys = [:first_name, :last_name, :email, :uid, :provider]
+    keys = %i[first_name last_name email uid provider]
 
     keys.each do |k|
       if session.has_key?(k)
@@ -13,10 +13,8 @@ class RegisterController < ApplicationController
     end
 
     # if user is signed in, redirect to page about user
-    if user_signed_in?
-      redirect_to(dashboard_path)
-    end
-    
+    redirect_to(dashboard_path) if user_signed_in?
+
     # if session.has_key?(:email)
     #   @user.email = session[:email]
     #   @user.first_name = session
