@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/spec/sign_in_spec.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/spec/sign_in_spec.rb": {
         "lines": [
           1,
           null,
@@ -88,13 +88,6 @@
           1,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           null,
           null,
           1,
@@ -102,6 +95,7 @@
           1,
           1,
           null,
+          1,
           1,
           1,
           1,
@@ -183,34 +177,97 @@
           1,
           1,
           1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
+          null,
+          null,
           1,
           1,
           1,
           1,
           1,
           1,
+          1,
+          null,
           null,
           null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           1,
           1,
           1,
           1,
+          null,
           1,
           1,
           1,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -238,34 +295,180 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
           null,
+          1,
           null,
+          1,
           null,
+          1,
+          1,
           null,
+          1,
           null,
+          1,
           null,
+          1,
           null,
+          1,
           null,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
           1,
           1,
+          null,
           1,
+          null,
           1,
+          null,
           1,
+          null,
           1,
+          null,
           1,
+          null,
           1,
+          null,
           1,
+          null,
+          null,
           null,
           1,
           1,
@@ -276,43 +479,132 @@
           1,
           1,
           null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
           null,
           null,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
           null,
           null,
           null,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
+          1,
+          1,
           null,
+          1,
+          1,
+          1,
           null,
           null,
           null,
           null,
           null,
           null,
+          1,
+          8,
+          8,
+          8,
+          8,
           null,
           null,
+          1,
+          0,
           null,
           null,
+          1,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
           null,
           null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/spec/rails_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -383,7 +675,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/environment.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -392,7 +684,7 @@
           1
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/application.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/application.rb": {
         "lines": [
           1,
           null,
@@ -415,7 +707,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/boot.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -423,7 +715,7 @@
           1
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/environments/test.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/environments/test.rb": {
         "lines": [
           null,
           null,
@@ -475,7 +767,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/application_controller_renderer.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -487,7 +779,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/assets.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -505,7 +797,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/backtrace_silencers.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -516,7 +808,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/content_security_policy.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -550,7 +842,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/cookies_serializer.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
@@ -559,7 +851,7 @@
           1
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/filter_parameter_logging.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -567,7 +859,7 @@
           1
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/inflections.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -587,7 +879,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/mime_types.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -595,14 +887,14 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/omniauth.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/omniauth.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/initializers/wrap_parameters.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -620,10 +912,15 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/config/routes.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/config/routes.rb": {
         "lines": [
           1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1,
@@ -659,61 +956,61 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/application_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/dashboard_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/dashboard_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/events_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/events_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/me_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/me_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/register_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/register_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/rewards_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/rewards_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/signin_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/signin_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/test_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/test_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/helpers/users_helper.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/helpers/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/controllers/application_controller.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/application_controller.rb": {
         "lines": [
           null,
           1,
@@ -721,37 +1018,37 @@
           1,
           null,
           1,
-          26,
+          40,
           null,
           null,
           1,
-          89,
+          264,
           0,
           null,
           null,
-          89,
+          264,
           null,
-          89,
+          264,
           null,
-          89,
-          null,
-          null,
-          1,
-          41,
+          264,
           null,
           null,
           1,
-          24,
+          68,
+          null,
+          null,
+          1,
+          64,
           null,
           null,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/controllers/signin_controller.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/signin_controller.rb": {
         "lines": [
           1,
           1,
-          12,
+          25,
           0,
           0,
           null,
@@ -762,16 +1059,11 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/controllers/register_controller.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/register_controller.rb": {
         "lines": [
           1,
           null,
           1,
-          null,
-          3,
-          0,
-          null,
-          null,
           3,
           null,
           3,
@@ -784,6 +1076,11 @@
           null,
           null,
           null,
+          3,
+          0,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -793,7 +1090,7 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/models/user.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -812,19 +1109,19 @@
           null,
           null,
           null,
-          9,
+          6,
           null,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/models/application_record.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/controllers/sessions_controller.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           null,
@@ -843,18 +1140,18 @@
           null,
           null,
           1,
-          9,
-          7,
+          22,
+          20,
           null,
-          7,
-          7,
+          20,
+          20,
           null,
           null,
           null,
-          9,
-          7,
-          7,
-          7,
+          22,
+          20,
+          20,
+          20,
           null,
           2,
           2,
@@ -922,33 +1219,32 @@
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/controllers/dashboard_controller.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/dashboard_controller.rb": {
         "lines": [
           1,
           1,
           1,
-          14,
-          6,
-          null,
+          28,
+          28,
           null,
           null
         ]
       },
-      "/home/charliew/Documents/class/fall2020/csce431/esc_member_point_tracker/app/controllers/users_controller.rb": {
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
           null,
           1,
-          10,
-          8,
+          7,
+          5,
           null,
           2,
           null,
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
@@ -982,14 +1278,14 @@
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
@@ -1000,8 +1296,181 @@
           null,
           null
         ]
+      },
+      "C:/CSCE431/ESCMemberPointTracker/app/controllers/rewards_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          15,
+          15,
+          15,
+          null,
+          null,
+          1,
+          5,
+          5,
+          5,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/CSCE431/ESCMemberPointTracker/app/models/reward.rb": {
+        "lines": [
+          1,
+          16,
+          null,
+          1,
+          13,
+          13,
+          0,
+          null,
+          null,
+          null,
+          1,
+          13,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          15,
+          0,
+          null,
+          15,
+          15,
+          15,
+          null,
+          15,
+          13,
+          13,
+          null,
+          0,
+          null,
+          null,
+          null,
+          15,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          42,
+          null,
+          null,
+          1,
+          5,
+          null,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1602472067
+    "timestamp": 1603697002
   }
 }

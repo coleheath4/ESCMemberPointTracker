@@ -21,6 +21,11 @@ class RewardsController < ApplicationController
 
   def new
     @is_admin = user_is_admin?
+
+    if (!@is_admin)
+      redirect_to(rewards_path)
+    end
+
     @reward = Reward.new
   end
 
@@ -40,6 +45,11 @@ class RewardsController < ApplicationController
 
   def edit
     @is_admin = user_is_admin?
+
+    if (!@is_admin)
+      redirect_to(reward_path)
+    end
+
     @reward = Reward.find(params[:id])
   end
 
@@ -58,6 +68,11 @@ class RewardsController < ApplicationController
 
   def delete
     @is_admin = user_is_admin?
+    
+    if (!@is_admin)
+      redirect_to(reward_path)
+    end
+    
     @reward = Reward.find(params[:id])
   end
 
