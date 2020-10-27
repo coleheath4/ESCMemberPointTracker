@@ -11,92 +11,91 @@ RSpec.describe 'ESC Point Tracker', type: :system do
 
   describe 'register a user' do
     it 'registers a new user' do
-        visit signin_path
-        click_link('Register')
-        fill_in('username', :with => 'myUsername')
-        fill_in('password', :with => 'myPassword')
-        fill_in('password_confirm', :with => 'myPassword')
-        fill_in('user_email', :with => 'myemail@email.com')
-        fill_in('user_first_name', :with => 'myFirst')
-        fill_in('user_last_name', :with => 'myLast')
-        sleep(5)
-        click_button('Register')
-        expect(page.body).to have_content('Dashboard')
-        sleep(5)
+      visit signin_path
+      click_link('Register')
+      fill_in('username', with: 'myUsername')
+      fill_in('password', with: 'myPassword')
+      fill_in('password_confirm', with: 'myPassword')
+      fill_in('user_email', with: 'myemail@email.com')
+      fill_in('user_first_name', with: 'myFirst')
+      fill_in('user_last_name', with: 'myLast')
+      sleep(5)
+      click_button('Register')
+      expect(page.body).to have_content('Dashboard')
+      sleep(5)
     end
   end
 
   describe 'login' do
     it 'existing user can log in' do
-        visit signin_path
-        click_link('Register')
-        fill_in('username', :with => 'myUsername')
-        fill_in('password', :with => 'myPassword')
-        fill_in('password_confirm', :with => 'myPassword')
-        fill_in('user_email', :with => 'myemail@email.com')
-        fill_in('user_first_name', :with => 'myFirst')
-        fill_in('user_last_name', :with => 'myLast')
-        click_button('Register')
-        click_link('Logout')
-        fill_in('username', :with => 'myUsername')
-        fill_in('password', :with => 'myPassword')
-        click_button('Log In')
-        expect(page.body).to have_content('Dashboard')
-        sleep(5)
+      visit signin_path
+      click_link('Register')
+      fill_in('username', with: 'myUsername')
+      fill_in('password', with: 'myPassword')
+      fill_in('password_confirm', with: 'myPassword')
+      fill_in('user_email', with: 'myemail@email.com')
+      fill_in('user_first_name', with: 'myFirst')
+      fill_in('user_last_name', with: 'myLast')
+      click_button('Register')
+      click_link('Logout')
+      fill_in('username', with: 'myUsername')
+      fill_in('password', with: 'myPassword')
+      click_button('Log In')
+      expect(page.body).to have_content('Dashboard')
+      sleep(5)
     end
   end
 
   describe 'login w/o account info' do
     it 'malicious user cannot login without an account' do
-        visit signin_path
-        click_button('Log In')
-        expect(page.body).to have_content("Don't have an account?")
-        sleep(5)
-        click_button('Log In')
-        expect(page.body).to have_content("Don't have an account?")
-        sleep(5)
+      visit signin_path
+      click_button('Log In')
+      expect(page.body).to have_content("Don't have an account?")
+      sleep(5)
+      click_button('Log In')
+      expect(page.body).to have_content("Don't have an account?")
+      sleep(5)
     end
   end
 
   describe 'admin access' do
     it 'user cannot view admin page as non-admin' do
-        visit signin_path
-        click_link('Register')
-        fill_in('username', :with => 'myUsername')
-        fill_in('password', :with => 'myPassword')
-        fill_in('password_confirm', :with => 'myPassword')
-        fill_in('user_email', :with => 'myemail@email.com')
-        fill_in('user_first_name', :with => 'myFirst')
-        fill_in('user_last_name', :with => 'myLast')
-        click_button('Register')
-        click_link('Logout')
-        fill_in('username', :with => 'myUsername')
-        fill_in('password', :with => 'myPassword')
-        click_button('Log In')
-        visit users_path
-        expect(page.body).to have_content('Dashboard')
-        sleep(5)
+      visit signin_path
+      click_link('Register')
+      fill_in('username', with: 'myUsername')
+      fill_in('password', with: 'myPassword')
+      fill_in('password_confirm', with: 'myPassword')
+      fill_in('user_email', with: 'myemail@email.com')
+      fill_in('user_first_name', with: 'myFirst')
+      fill_in('user_last_name', with: 'myLast')
+      click_button('Register')
+      click_link('Logout')
+      fill_in('username', with: 'myUsername')
+      fill_in('password', with: 'myPassword')
+      click_button('Log In')
+      visit users_path
+      expect(page.body).to have_content('Dashboard')
+      sleep(5)
     end
-   
+
     context 'with an admin account' do
-      
-      it 'admin will have access to the users page'do
+      it 'admin will have access to the users page' do
         # make user account
         u = create_default_admin_account
-        
+
         # user signs in
         visit signin_path
         fill_in('username', with: u.username)
         fill_in('password', with: 'pass')
         click_button('Log In')
-        
+
         visit dashboard_path
         click_link('Users')
         sleep(2)
         expect(current_path).to eql users_path
       end
 
-      it 'admin will be redirected to the dashboard page if admin tries to access the dashboard'do
+      it 'admin will be redirected to the dashboard page if admin tries to access the dashboard' do
         # make user account
         u = User.new
         u.username = 'usn'
@@ -106,7 +105,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         u.last_name = 'Last'
         u.is_admin = true
         u.save!
-        
+
         visit signin_path
         fill_in('username', with: u.username)
         fill_in('password', with: 'pass')
@@ -127,7 +126,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         admin.last_name = 'Last'
         admin.is_admin = true
         admin.save!
-        
+
         # random non-admin accounts
         u = User.new
         u.username = 'user1'
@@ -150,7 +149,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         u.first_name = 'User3'
         u.last_name = 'Last3'
         u.save!
-        
+
         visit signin_path
         fill_in('username', with: admin.username)
         fill_in('password', with: 'pass')
@@ -172,7 +171,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         admin.last_name = 'Last'
         admin.is_admin = true
         admin.save!
-        
+
         # # random non-admin accounts
         # u = User.new
         # u.username = 'auser1'
@@ -190,7 +189,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         expect(current_path).to eql users_path
         expect(page).to have_content('First Last')
         sleep(2)
-        
+
         # delete account
         # first(page.find('Details')).click
         click_on 'Details'
@@ -201,7 +200,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(1)
         expect(page).to have_content('Are you sure you want to permanently delete this user?')
       end
-      
+
       it 'can delete a user in the web app', focus: true do
         # random non-admin accounts
         u = User.new
@@ -211,7 +210,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         u.first_name = 'AUser1'
         u.last_name = 'Last1'
         u.save!
-      
+
         # make user account
         admin = User.new
         admin.username = 'usn'
@@ -221,7 +220,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         admin.last_name = 'Last'
         admin.is_admin = true
         admin.save!
-      
+
         visit signin_path
         fill_in('username', with: admin.username)
         fill_in('password', with: 'pass')
@@ -229,7 +228,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         visit users_path
         expect(current_path).to eql users_path
         expect(page).to have_content('AUser1 Last1')
-        
+
         # delete account
         first(:link, 'Details').click
         expect(page).to have_content('Member Details')
@@ -239,7 +238,6 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(3)
         expect(page).not_to have_content('AUser1 Last1')
       end
-      
     end
 
     context 'as a regular user' do
@@ -256,7 +254,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         fill_in('username', with: u.username)
         fill_in('password', with: 'pass')
         click_button('Log In')
-        
+
         visit users_path
         sleep(3)
         expect(current_path).to eql dashboard_path
@@ -282,7 +280,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
   #       fill_in('username', with: u.username)
   #       fill_in('password', with: 'pass')
   #       click_button('Log In')
-        
+
   #       # helper.request.cookies['user_token'] = u.id
   #       visit signin_path
   #       sleep(500)
@@ -296,8 +294,6 @@ RSpec.describe 'ESC Point Tracker', type: :system do
 
   describe 'Rewards page' do
     context 'when there is a reward' do
-      
-      
       it 'can go to the rewards page' do
         u = User.new
         u.username = 'usn'
@@ -360,26 +356,26 @@ RSpec.describe 'ESC Point Tracker', type: :system do
 
       it 'can edit event/reward details', focus: true do
         reward1 = Reward.new
-        reward1.name = "Event 1"
-        reward1.description = "Event 1 desc"
+        reward1.name = 'Event 1'
+        reward1.description = 'Event 1 desc'
         reward1.points_required = 5
-        reward1.when = "2021-01-08T04:05:06"
+        reward1.when = '2021-01-08T04:05:06'
         reward1.save!
 
         reward2 = Reward.new
-        reward2.name = "Event 2"
-        reward2.description = "Event 2 desc"
+        reward2.name = 'Event 2'
+        reward2.description = 'Event 2 desc'
         reward2.points_required = 5
-        reward2.when = "2021-04-21T04:05:06"
+        reward2.when = '2021-04-21T04:05:06'
         reward2.save!
 
         reward3 = Reward.new
-        reward3.name = "Event 3"
-        reward3.description = "Event 3 desc"
+        reward3.name = 'Event 3'
+        reward3.description = 'Event 3 desc'
         reward3.points_required = 5
-        reward3.when = "2021-01-13T04:05:06"
+        reward3.when = '2021-01-13T04:05:06'
         reward3.save!
-        
+
         admin = User.new
         admin.username = 'usn'
         admin.password = 'pass'
@@ -387,7 +383,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         admin.first_name = 'First'
         admin.last_name = 'Last'
         admin.is_admin = true
-        admin.save!  
+        admin.save!
 
         visit signin_path
         fill_in('username', with: admin.username)
@@ -410,31 +406,30 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         expect(page).to have_content('New event desc')
 
         sleep(3)
-      
       end
 
       it 'can delete events/rewards', focus: true do
         reward1 = Reward.new
-        reward1.name = "Event 1"
-        reward1.description = "Event 1 desc"
+        reward1.name = 'Event 1'
+        reward1.description = 'Event 1 desc'
         reward1.points_required = 5
-        reward1.when = "2021-01-08T04:05:06"
+        reward1.when = '2021-01-08T04:05:06'
         reward1.save!
 
         reward2 = Reward.new
-        reward2.name = "Event 2"
-        reward2.description = "Event 2 desc"
+        reward2.name = 'Event 2'
+        reward2.description = 'Event 2 desc'
         reward2.points_required = 5
-        reward2.when = "2021-04-21T04:05:06"
+        reward2.when = '2021-04-21T04:05:06'
         reward2.save!
 
         reward3 = Reward.new
-        reward3.name = "Event 3"
-        reward3.description = "Event 3 desc"
+        reward3.name = 'Event 3'
+        reward3.description = 'Event 3 desc'
         reward3.points_required = 5
-        reward3.when = "2021-01-13T04:05:06"
+        reward3.when = '2021-01-13T04:05:06'
         reward3.save!
-        
+
         admin = User.new
         admin.username = 'usn'
         admin.password = 'pass'
@@ -442,7 +437,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         admin.first_name = 'First'
         admin.last_name = 'Last'
         admin.is_admin = true
-        admin.save!  
+        admin.save!
 
         visit signin_path
         fill_in('username', with: admin.username)
@@ -461,18 +456,18 @@ RSpec.describe 'ESC Point Tracker', type: :system do
 
         expect(page).to have_content('Reward Event 1 destroyed successfully')
 
-        sleep(3)      
+        sleep(3)
       end
     end
 
     context 'as a regular user', focus: false do
       it 'cannot have access to the add rewards button' do
-        u = create_default_user_account()
+        u = create_default_user_account
         sign_in(u)
 
         sleep(1)
         visit rewards_path
-        expect(page).not_to have_content("Add Reward")
+        expect(page).not_to have_content('Add Reward')
 
         sleep(3)
       end
@@ -488,14 +483,14 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       end
 
       it 'can see the percentage I am about to complete for a reward' do
-        u = create_default_user_account()
+        u = create_default_user_account
         u.points = 10
         u.save!
         sign_in(u)
 
         reward = Reward.new
         reward.name = 'Test Reward'
-        reward.description = "This is the description"
+        reward.description = 'This is the description'
         reward.points_required = 20
         reward.when = Time.now + 3.months
         reward.save!
@@ -506,7 +501,7 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       end
 
       it 'can navigate to rewards from different pages' do
-        u = create_default_user_account()
+        u = create_default_user_account
         sign_in(u)
 
         visit dashboard_path
@@ -516,13 +511,12 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         visit rewards_path
         click_on 'Rewards'
         expect(current_path).to eql rewards_path
-
       end
 
       it 'cannot access the page to create new rewards', hello: true do
         u = create_default_user_account
         sign_in(u)
-        
+
         visit new_reward_path
         expect(current_path).not_to eql new_reward_path
         sleep(5)
@@ -531,14 +525,14 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       it 'cannot access the page to edit rewards', hello: true do
         reward = Reward.new
         reward.name = 'Test Reward'
-        reward.description = "This is the description"
+        reward.description = 'This is the description'
         reward.points_required = 20
         reward.when = Time.now + 3.months
         reward.save!
 
         u = create_default_user_account
         sign_in(u)
-        
+
         visit edit_reward_path(reward)
         expect(current_path).not_to eql edit_reward_path(reward)
         sleep(5)
@@ -547,21 +541,20 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       it 'cannot access the page to delete rewards', hello: true do
         reward = Reward.new
         reward.name = 'Test Reward'
-        reward.description = "This is the description"
+        reward.description = 'This is the description'
         reward.points_required = 20
         reward.when = Time.now + 3.months
         reward.save!
-        
+
         u = create_default_user_account
         sign_in(u)
-        
+
         visit delete_reward_path(reward)
         expect(current_path).not_to eql delete_reward_path(reward)
         sleep(5)
       end
     end
   end
-  
 end
 
 def sign_in(account)
@@ -583,7 +576,7 @@ def create_default_user_account
   u.first_name = 'First'
   u.last_name = 'Last'
   u.save!
-  return u
+  u
 end
 
 def create_default_admin_account
@@ -595,5 +588,5 @@ def create_default_admin_account
   u.last_name = 'Istrator'
   u.is_admin = true
   u.save!
-  return u
+  u
 end
