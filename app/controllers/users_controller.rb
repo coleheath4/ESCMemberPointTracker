@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     else
       redirect_to(dashboard_path)
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    end
   end
 
   def show
