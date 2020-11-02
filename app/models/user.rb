@@ -16,5 +16,9 @@ class User < ApplicationRecord
     end
   end
 
+  def list_events
+    Event.where(id: events).order('event_date ASC')
+  end
+
   scope :sorted, -> { order('points DESC') }
 end
