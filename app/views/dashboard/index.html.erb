@@ -54,6 +54,9 @@
         </tr>
       </table>
     </div>
+    <br>
+    <h2>Event History</h2>
+    <%= render(:partial => 'users/attended_events', :locals => {:user => @user, :return_path => dashboard_path, :return_path_name => 'Dashboard'}) %>
 </div>
 
 <script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>

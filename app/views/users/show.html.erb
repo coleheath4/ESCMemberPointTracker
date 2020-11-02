@@ -90,7 +90,7 @@
   <div class="row">
     <div class="users show">
 
-      <%= render(partial: 'attended_events', :locals => {:user => @user}) %>
+      <%= render(partial: 'attended_events', :locals => {:user => @user, :return_path => user_path(@user.id), :return_path_name => "User Details - #{@user.first_name}"}) %>
     
     </div>    
   </div>  
