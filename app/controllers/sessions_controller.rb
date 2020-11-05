@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
     end
 
     if params_are_found?(params, %w[username password password_confirm email first_name last_name])
-      if !(User.where(email: params[:email]).first || User.where(username: params[:username]).first) && params[:password].eql?(params[:password_confirm]) && !password_valid(params[:password])
+      if !(User.where(email: params[:email]).first || User.where(username: params[:username]).first) && params[:password].eql?(params[:password_confirm]) && password_valid(params[:password])
         u = User.new
         u.username = params[:username]
         u.password = params[:password]
@@ -74,7 +74,7 @@ class SessionsController < ApplicationController
           flash[:alert] << "The passwords do not match"
         end
         
-        if !@password_errors.nil? || !@password_errors.empty?
+        if !@password_errors.nil? && !@password_errors.empty?
           flash_password_errors
         end
         
@@ -116,7 +116,7 @@ def password_valid(password)
   # checks if there are capital letters
   has_cap = false
   password.each do |letter|
-    if letter === ('A'..'Z')
+    if ('A'..'Z') === letter
       has_cap = true
       break
     end
@@ -128,7 +128,7 @@ def password_valid(password)
   # checks if there are lowercase letters
   has_low = false
   password.each do |letter|
-    if letter == ('a'..'z')
+    if ('a'..'z') === letter
       has_low = true
       break
     end
@@ -140,7 +140,7 @@ def password_valid(password)
   # checks if there are numerical characters
   has_num = false
   password.each do |letter|
-    if letter == ('0'..'9')
+    if ('0'..'9') === letter
       has_num = true
       break
     end
@@ -148,7 +148,8 @@ def password_valid(password)
   unless has_num
     @password_errors << 'Password needs to have at least one number'
   end
-  !!@password_errors
+  
+  return @password_errors.nil? || @password_errors.empty?
 end
 
 def flash_password_errors
