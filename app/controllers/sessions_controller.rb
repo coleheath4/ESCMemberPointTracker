@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       flash[:notice] = 'You are now logged in.'
       redirect_to dashboard_path
     else
-      flash.now[:notice] = 'Invalid username/password combination.'
+      flash.now[:alert] = 'Invalid username/password combination.'
       render('signin/show')
     end
   end
@@ -62,11 +62,26 @@ class SessionsController < ApplicationController
         session[:user_id] = u.id
         redirect_to(dashboard_path)
       else
+        flash[:alert] = []
+        
+        if !User.where(username: params[:username]).empty?
+          flash[:alert] << "That username is taken, choose another username"
+        end
+        if !User.where(email: params[:email]).empty?
+          flash[:alert] << "Please use another email"
+        end
+        if params[:password] != params[:password_confirm]
+          flash[:alert] << "The passwords do not match"
+        end
+        
         redirect_to(register_path)
       end
     else
-      # TODO: handle this error
-      puts 'This is not supposed to happen'
+      if flash[:alert].nil?
+        flash[:alert] = []
+      end
+      flash[:alert] << "Please enter all fields"
+      redirect_to(register_path)
     end
   end
 
