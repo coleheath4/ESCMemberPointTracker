@@ -5,14 +5,23 @@ class UsersController < ApplicationController
 
   def index
     if user_is_admin?
-      @users = User.sorted
+      @users = User.sorted 
+      
+      respond_to do |format|
+        format.html
+        format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+      end
     else
       redirect_to(dashboard_path)
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    if user_is_admin?
+      @user = User.find(params[:id])
+    else
+      redirect_to(dashboard_path)
+    end
   end
 
   def new

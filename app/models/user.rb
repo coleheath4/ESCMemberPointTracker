@@ -16,5 +16,21 @@ class User < ApplicationRecord
     end
   end
 
+  def self.to_csv
+    attributes = %w{id email username is_admin first_name last_name points }
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map{ |attr| user.send(attr)}
+      end
+    end
+  end
+
+  def name 
+    "#{first_name} #{last_name}"
+  end
+
   scope :sorted, -> { order('points DESC') }
 end
