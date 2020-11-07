@@ -56,6 +56,13 @@ class UsersController < ApplicationController
     redirect_to(users_path)
   end
 
+  def delete_all_users
+    @users = User.non_admin_list(User.sorted)
+    User.where(is_admin: false).destroy_all
+    flash[:notice] = "Users cleared successfully"
+    redirect_to(users_path)
+  end
+    
   private
 
   def user_params
