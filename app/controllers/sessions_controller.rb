@@ -63,28 +63,20 @@ class SessionsController < ApplicationController
         redirect_to(dashboard_path)
       else
         flash[:alert] = []
-        
-        if !User.where(username: params[:username]).empty?
-          flash[:alert] << "That username is taken, choose another username"
+
+        unless User.where(username: params[:username]).empty?
+          flash[:alert] << 'That username is taken, choose another username'
         end
-        if !User.where(email: params[:email]).empty?
-          flash[:alert] << "Please use another email"
-        end
-        if params[:password] != params[:password_confirm]
-          flash[:alert] << "The passwords do not match"
-        end
-        
-        if !@password_errors.nil? && !@password_errors.empty?
-          flash_password_errors
-        end
-        
+        flash[:alert] << 'Please use another email' unless User.where(email: params[:email]).empty?
+        flash[:alert] << 'The passwords do not match' if params[:password] != params[:password_confirm]
+
+        flash_password_errors if !@password_errors.nil? && !@password_errors.empty?
+
         redirect_to(register_path)
       end
     else
-      if flash[:alert].nil?
-        flash[:alert] = []
-      end
-      flash[:alert] << "Please enter all fields"
+      flash[:alert] = [] if flash[:alert].nil?
+      flash[:alert] << 'Please enter all fields'
       redirect_to(register_path)
     end
   end
@@ -108,48 +100,40 @@ def password_valid(password)
   password = password.split('')
   # check if uppercase is found
   @password_errors ||= []
-  
-  if password.length < 8
-    @password_errors << 'Password needs to be at least 8 characters'
-  end
-  
+
+  @password_errors << 'Password needs to be at least 8 characters' if password.length < 8
+
   # checks if there are capital letters
   has_cap = false
   password.each do |letter|
-    if ('A'..'Z') === letter
+    if ('A'..'Z').include?(letter)
       has_cap = true
       break
     end
   end
-  unless has_cap
-    @password_errors << 'Password needs to have at least one capitalize letter'
-  end
+  @password_errors << 'Password needs to have at least one capitalize letter' unless has_cap
 
   # checks if there are lowercase letters
   has_low = false
   password.each do |letter|
-    if ('a'..'z') === letter
+    if ('a'..'z').include?(letter)
       has_low = true
       break
     end
   end
-  unless has_low
-    @password_errors << 'Password needs to have at least one lowercase letter'
-  end
-  
+  @password_errors << 'Password needs to have at least one lowercase letter' unless has_low
+
   # checks if there are numerical characters
   has_num = false
   password.each do |letter|
-    if ('0'..'9') === letter
+    if ('0'..'9').include?(letter)
       has_num = true
       break
     end
   end
-  unless has_num
-    @password_errors << 'Password needs to have at least one number'
-  end
-  
-  return @password_errors.nil? || @password_errors.empty?
+  @password_errors << 'Password needs to have at least one number' unless has_num
+
+  @password_errors.nil? || @password_errors.empty?
 end
 
 def flash_password_errors

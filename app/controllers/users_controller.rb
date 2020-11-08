@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def index
     if user_is_admin?
-      @users = User.sorted 
-      
+      @users = User.sorted
+
       respond_to do |format|
         format.html
         format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
@@ -68,10 +68,10 @@ class UsersController < ApplicationController
   def delete_all_users
     @users = User.non_admin_list(User.sorted)
     User.where(is_admin: false).destroy_all
-    flash[:notice] = "Users cleared successfully"
+    flash[:notice] = 'Users cleared successfully'
     redirect_to(users_path)
   end
-    
+
   private
 
   def user_params

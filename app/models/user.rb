@@ -21,13 +21,13 @@ class User < ApplicationRecord
   end
 
   def self.to_csv
-    attributes = %w{id email username is_admin first_name last_name points events }
+    attributes = %w[id email username is_admin first_name last_name points events]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
 
       all.each do |user|
-        csv << attributes.map{ |attr| user.send(attr)}
+        csv << attributes.map { |attr| user.send(attr) }
       end
     end
   end

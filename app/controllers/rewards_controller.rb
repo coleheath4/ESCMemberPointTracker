@@ -85,7 +85,7 @@ class RewardsController < ApplicationController
     @is_admin = user_is_admin?
     redirect_to(rewards_path) unless @is_admin
     Reward.destroy_all
-    flash[:notice] = "Rewards cleared successfully"
+    flash[:notice] = 'Rewards cleared successfully'
     redirect_to(rewards_path)
   end
 
