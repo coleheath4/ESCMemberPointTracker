@@ -16,6 +16,10 @@ class User < ApplicationRecord
     end
   end
 
+  def list_events
+    Event.where(id: events).order('event_date ASC')
+  end
+
   def self.to_csv
     attributes = %w{id email username is_admin first_name last_name points }
 
@@ -28,7 +32,7 @@ class User < ApplicationRecord
     end
   end
 
-  def name 
+  def name
     "#{first_name} #{last_name}"
   end
 
@@ -43,5 +47,3 @@ class User < ApplicationRecord
     non_admin_users
   end
 end
-
-
