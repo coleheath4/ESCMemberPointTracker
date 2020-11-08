@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'ESC Point Tracker', type: :system do
@@ -12,12 +10,12 @@ RSpec.describe 'ESC Point Tracker', type: :system do
   end
 
   describe 'register a user' do
-    it 'registers a new user', signin: true do
+    it 'registers a new user' do
       visit signin_path
       click_link('Register')
       fill_in('username', with: 'myUsername')
-      fill_in('password', with: 'myPassword1')
-      fill_in('password_confirm', with: 'myPassword1')
+      fill_in('password', with: 'myPassword')
+      fill_in('password_confirm', with: 'myPassword')
       fill_in('user_email', with: 'myemail@email.com')
       fill_in('user_first_name', with: 'myFirst')
       fill_in('user_last_name', with: 'myLast')
@@ -33,15 +31,15 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       visit signin_path
       click_link('Register')
       fill_in('username', with: 'myUsername')
-      fill_in('password', with: 'myPassword1')
-      fill_in('password_confirm', with: 'myPassword1')
+      fill_in('password', with: 'myPassword')
+      fill_in('password_confirm', with: 'myPassword')
       fill_in('user_email', with: 'myemail@email.com')
       fill_in('user_first_name', with: 'myFirst')
       fill_in('user_last_name', with: 'myLast')
       click_button('Register')
       click_link('Logout')
       fill_in('username', with: 'myUsername')
-      fill_in('password', with: 'myPassword1')
+      fill_in('password', with: 'myPassword')
       click_button('Log In')
       expect(page.body).to have_content('Dashboard')
       sleep(5)
@@ -65,15 +63,15 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       visit signin_path
       click_link('Register')
       fill_in('username', with: 'myUsername')
-      fill_in('password', with: 'myPassword1')
-      fill_in('password_confirm', with: 'myPassword1')
+      fill_in('password', with: 'myPassword')
+      fill_in('password_confirm', with: 'myPassword')
       fill_in('user_email', with: 'myemail@email.com')
       fill_in('user_first_name', with: 'myFirst')
       fill_in('user_last_name', with: 'myLast')
       click_button('Register')
       click_link('Logout')
       fill_in('username', with: 'myUsername')
-      fill_in('password', with: 'myPassword1')
+      fill_in('password', with: 'myPassword')
       click_button('Log In')
       visit users_path
       expect(page.body).to have_content('Dashboard')

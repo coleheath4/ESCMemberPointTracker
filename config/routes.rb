@@ -14,11 +14,6 @@ Rails.application.routes.draw do
   get 'eligible_rewards', to: 'rewards#eligible', as: 'eligible_rewards'
   get 'events', to: 'events#index', as: 'events'
   get 'my_events', to: 'events#my_events', as: 'my_events'
-  get 'delete_all_users_warning', to: 'users#delete_all_users_warning', as: 'delete_all_users_warning'
-  get 'delete_all_users', to: 'users#delete_all_users', as: 'delete_all_users'
-  get 'delete_rewards_warning', to: 'rewards#delete_rewards_warning', as: 'delete_rewards_warning'
-  get 'delete_rewards', to: 'rewards#delete_rewards', as: 'delete_rewards'
-
   # get 'me', to: 'me#show', as: 'me'
 
   post 'default_login', to: 'sessions#default_create', as: 'default_login'

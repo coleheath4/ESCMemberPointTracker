@@ -16,34 +16,5 @@ class User < ApplicationRecord
     end
   end
 
-  def list_events
-    Event.where(id: events).order('event_date ASC')
-  end
-
-  def self.to_csv
-    attributes = %w[id email username is_admin first_name last_name points events]
-
-    CSV.generate(headers: true) do |csv|
-      csv << attributes
-
-      all.each do |user|
-        csv << attributes.map { |attr| user.send(attr) }
-      end
-    end
-  end
-
-  def name
-    "#{first_name} #{last_name}"
-  end
-
   scope :sorted, -> { order('points DESC') }
-
-  def self.non_admin_list(users = nil)
-    users = Users.all if users.nil?
-    non_admin_users = []
-    users.each do |u|
-      non_admin_users << u if u.is_admin == false
-    end
-    non_admin_users
-  end
 end

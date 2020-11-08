@@ -4,16 +4,7 @@
 <div class="container">
 	<!-- Main Content -->
 	<div class="container-fluid">
-		<% if flash[:alert] %>
-		<br>
-		<div class="alert alert-danger" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<%= flash[:alert] %>
-		</div>
-		<% end %>
-		<div class="row main-content text-center">
+		<div class="row main-content bg-success text-center">
 			<div class="col-md-4 text-center company__info">
 				<span class="company__logo"><h2><span class="far fa-thumbs-up"></span></h2></span>
 				<h4 class="company_title">ESC Member Point Tracker</h4>
