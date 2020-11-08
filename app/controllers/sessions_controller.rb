@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       flash[:notice] = 'You are now logged in.'
       redirect_to dashboard_path
     else
-      flash.now[:notice] = 'Invalid username/password combination.'
+      flash.now[:alert] = 'Invalid username or password'
       render('signin/show')
     end
   end
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
     end
 
     if params_are_found?(params, %w[username password password_confirm email first_name last_name])
-      if !(User.where(email: params[:email]).first || User.where(username: params[:username]).first) && params[:password].eql?(params[:password_confirm])
+      if !(User.where(email: params[:email]).first || User.where(username: params[:username]).first) && params[:password].eql?(params[:password_confirm]) && password_valid(params[:password])
         u = User.new
         u.username = params[:username]
         u.password = params[:password]
@@ -62,11 +62,30 @@ class SessionsController < ApplicationController
         session[:user_id] = u.id
         redirect_to(dashboard_path)
       else
+        flash[:alert] = []
+        
+        if !User.where(username: params[:username]).empty?
+          flash[:alert] << "That username is taken, choose another username"
+        end
+        if !User.where(email: params[:email]).empty?
+          flash[:alert] << "Please use another email"
+        end
+        if params[:password] != params[:password_confirm]
+          flash[:alert] << "The passwords do not match"
+        end
+        
+        if !@password_errors.nil? && !@password_errors.empty?
+          flash_password_errors
+        end
+        
         redirect_to(register_path)
       end
     else
-      # TODO: handle this error
-      puts 'This is not supposed to happen'
+      if flash[:alert].nil?
+        flash[:alert] = []
+      end
+      flash[:alert] << "Please enter all fields"
+      redirect_to(register_path)
     end
   end
 
@@ -82,5 +101,63 @@ class SessionsController < ApplicationController
     end
 
     true
+  end
+end
+
+def password_valid(password)
+  password = password.split('')
+  # check if uppercase is found
+  @password_errors ||= []
+  
+  if password.length < 8
+    @password_errors << 'Password needs to be at least 8 characters'
+  end
+  
+  # checks if there are capital letters
+  has_cap = false
+  password.each do |letter|
+    if ('A'..'Z') === letter
+      has_cap = true
+      break
+    end
+  end
+  unless has_cap
+    @password_errors << 'Password needs to have at least one capitalize letter'
+  end
+
+  # checks if there are lowercase letters
+  has_low = false
+  password.each do |letter|
+    if ('a'..'z') === letter
+      has_low = true
+      break
+    end
+  end
+  unless has_low
+    @password_errors << 'Password needs to have at least one lowercase letter'
+  end
+  
+  # checks if there are numerical characters
+  has_num = false
+  password.each do |letter|
+    if ('0'..'9') === letter
+      has_num = true
+      break
+    end
+  end
+  unless has_num
+    @password_errors << 'Password needs to have at least one number'
+  end
+  
+  return @password_errors.nil? || @password_errors.empty?
+end
+
+def flash_password_errors
+  if @password_errors
+    flash[:alert] ||= []
+
+    @password_errors.each do |err|
+      flash[:alert] << err
+    end
   end
 end

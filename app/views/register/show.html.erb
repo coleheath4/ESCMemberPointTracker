@@ -3,6 +3,19 @@
 
 	<!-- Main Content -->
 	<div class="container-fluid">
+        <div class="container">
+            <% if flash[:alert] %>
+                <br>
+                <% flash[:alert].each do |a| %>
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <%= a %>
+                </div>
+                <% end %>
+            <% end %>
+        </div>
 		<div class="row main-content bg-success text-center">
 			<div class="col-md-4 text-center company__info">
 				<span class="company__logo"><h2><span class="far fa-thumbs-up"></span></h2></span>

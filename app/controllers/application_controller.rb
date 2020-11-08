@@ -11,8 +11,11 @@ class ApplicationController < ActionController::Base
   def current_user
     session[:user_id] = cookies[:user_token] if !cookies[:user_token].blank? && session[:user_id].blank?
 
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-
+    @current_user ||= User.find(session[:user_id]) if session[:user_id] && !User.where(:id => session[:user_id]).empty?
+    if @current_user.nil?
+      cookies.delete :user_token
+    end
+    
     cookies[:user_token] = { value: @current_user.id, expires: 1.months.from_now } if @current_user
 
     @current_user
