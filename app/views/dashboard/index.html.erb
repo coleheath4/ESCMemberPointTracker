@@ -36,6 +36,14 @@
 </nav>
 
 <div class="container">
+    <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
     <h1>Dashboard</h1>
     <div class="row">
         <table summary="User detail view">
