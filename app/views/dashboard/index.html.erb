@@ -60,6 +60,20 @@
                 <%= current_user.points %>
             </td>
         </tr>
+        <% if @future_rewards.first %>
+          <tr>
+            <th>Next Reward:</th>
+            <td>
+              <%= @future_rewards.first.name %>
+            </td>
+          </tr>
+          <tr>
+            <th>Reward Date:</th>
+            <td>
+              <%= Reward.stringify_date(@future_rewards.first.when) %>
+            </td>
+          </tr>
+        <% end %>
       </table>
     </div>
     <br>
