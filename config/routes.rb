@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'delete_all_users', to: 'users#delete_all_users', as: 'delete_all_users'
   get 'delete_rewards_warning', to: 'rewards#delete_rewards_warning', as: 'delete_rewards_warning'
   get 'delete_rewards', to: 'rewards#delete_rewards', as: 'delete_rewards'
-  
+
   # get 'me', to: 'me#show', as: 'me'
 
   post 'default_login', to: 'sessions#default_create', as: 'default_login'
