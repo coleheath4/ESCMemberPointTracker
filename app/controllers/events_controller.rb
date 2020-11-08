@@ -14,6 +14,8 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = Event.find(params[:id])
+    @return_path = !params[:return_path].nil? ? params[:return_path] : events_path
+    @return_path_name = !params[:return_path].nil? ? params[:return_path_name] : 'Events'
   end
 
   def my_events

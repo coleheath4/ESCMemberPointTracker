@@ -6,13 +6,22 @@ class UsersController < ApplicationController
   def index
     if user_is_admin?
       @users = User.sorted
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+      end
     else
       redirect_to(dashboard_path)
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    if user_is_admin?
+      @user = User.find(params[:id])
+    else
+      redirect_to(dashboard_path)
+    end
   end
 
   def new
@@ -53,6 +62,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User '#{@user.username}' destroyed successfully"
+    redirect_to(users_path)
+  end
+
+  def delete_all_users
+    @users = User.non_admin_list(User.sorted)
+    User.where(is_admin: false).destroy_all
+    flash[:notice] = 'Users cleared successfully'
     redirect_to(users_path)
   end
 

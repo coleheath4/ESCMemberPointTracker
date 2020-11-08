@@ -36,6 +36,14 @@
 </nav>
 
 <div class="container">
+    <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
     <h1>Dashboard</h1>
     <div class="row">
         <table summary="User detail view">
@@ -52,8 +60,25 @@
                 <%= current_user.points %>
             </td>
         </tr>
+        <% if @future_rewards.first %>
+          <tr>
+            <th>Next Reward:</th>
+            <td>
+              <%= @future_rewards.first.name %>
+            </td>
+          </tr>
+          <tr>
+            <th>Reward Date:</th>
+            <td>
+              <%= Reward.stringify_date(@future_rewards.first.when) %>
+            </td>
+          </tr>
+        <% end %>
       </table>
     </div>
+    <br>
+    <h2>Event History</h2>
+    <%= render(:partial => 'users/attended_events', :locals => {:user => @user, :return_path => dashboard_path, :return_path_name => 'Dashboard'}) %>
 </div>
 
 <script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>

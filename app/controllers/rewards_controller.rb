@@ -81,6 +81,19 @@ class RewardsController < ApplicationController
     end
   end
 
+  def delete_rewards
+    @is_admin = user_is_admin?
+    redirect_to(rewards_path) unless @is_admin
+    Reward.destroy_all
+    flash[:notice] = 'Rewards cleared successfully'
+    redirect_to(rewards_path)
+  end
+
+  def delete_rewards_warning
+    @is_admin = user_is_admin?
+    redirect_to(rewards_path) unless @is_admin
+  end
+
   def reward_params
     params.require(:reward).permit(:name, :description, :points_required, :when)
   end
