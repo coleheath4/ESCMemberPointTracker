@@ -144,7 +144,7 @@
 
 <% if @is_admin %>
   <div class="text-center">
-    <%= link_to("Clear All Rewards", delete_rewards_warning_path, :class => 'action delete btn btn-danger') %>
+    <button type="button" class="action delete btn btn-danger" onclick="location.href='<%=delete_rewards_warning_path()%>'">Clear All Rewards</button>
   </div>
 <% end %>
 

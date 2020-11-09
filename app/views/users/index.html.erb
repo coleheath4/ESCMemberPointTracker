@@ -38,6 +38,10 @@
   <div class="books index">
     <h2>Members</h2>
 
+    <% if !flash[:notice].nil? %>
+    <h4><%= flash[:notice] %></h4>
+    <% end %>
+
     <table class="table table-hover">
       <thead>
         <tr>
@@ -60,13 +64,12 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to( 'Export', '/users.csv', :class => 'btn btn-secondary') %>
-    <%# <button type="button" class="btn btn-secondary">Export</button> %>
+    <button type="button" class="btn btn-secondary" onclick="location.href='/users.csv'">Export</button>
   </div>
 </div>
 
 <div class="text-center">
-  <%= link_to("Clear All Members", delete_all_users_warning_path, :class => 'action delete btn btn-danger') %>
+  <button type="button" class="action delete btn btn-danger" onclick="location.href='<%=delete_all_users_warning_path()%>'">Clear All Members</button>
 </div>
  
 
