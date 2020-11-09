@@ -6,3 +6,5 @@ This repo has three branches:
 -master
 -test
 -dev
+
+This app uses Heroku pipelines.
