@@ -265,16 +265,16 @@ RSpec.describe 'ESC Point Tracker', type: :system do
       
       end 
 
-      # it 'can export to csv', focus: true do
-      #   admin = create_default_admin_account
-      #   sign_in(admin)
-      #   visit users_path
-      #   sleep(1)
+      it 'can export to csv', focus: true do
+        admin = create_default_admin_account
+        sign_in(admin)
+        visit users_path
+        sleep(1)
 
-      #   expect(page).to have_content('Export')
+        click_button 'Export'
 
-      #   sleep(1)
-      # end
+        sleep(1)
+      end
 
       it 'can delete all users except admins', focus: true do
         user = create_default_user_account
