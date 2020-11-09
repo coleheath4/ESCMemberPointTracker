@@ -32,7 +32,7 @@
 <div class= "mt-3 text-center">
     <p>Are you sure you want to permanently delete all rewards?</p>
     <div class = "pt-1">
-        <%= link_to("Clear All Rewards", delete_rewards_path, :class => 'action delete btn btn-danger') %>
+        <button type="button" class="action delete btn btn-danger" onclick="location.href='<%=delete_rewards_path()%>'">Clear All Rewards</button>
     </div>
     <br>
     <%= link_to("Back", rewards_path, :class => 'btn-link') %>

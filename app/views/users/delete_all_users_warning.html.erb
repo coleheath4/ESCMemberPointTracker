@@ -31,7 +31,7 @@
     <p>Are you sure you want to permanently delete all current members?
     Only members without admin privileges will be deleted. </p>
     <div class = "pt-1">
-        <%= link_to("Clear All Members", delete_all_users_path, :class => 'action delete btn btn-danger') %>
+      <button type="button" class="action delete btn btn-danger" onclick="location.href='<%=delete_all_users_path()%>'">Clear All Members</button>
     </div>
     <br>
     <%= link_to("Back", users_path, :class => 'btn-link') %>

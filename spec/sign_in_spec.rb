@@ -240,6 +240,72 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(3)
         expect(page).not_to have_content('AUser1 Last1')
       end
+
+      it 'has access to clear all users except admins button', focus: true do
+        admin = create_default_admin_account
+        sign_in(admin)
+        visit users_path
+        sleep(1)
+
+        expect(page).to have_content('Clear All Members')
+
+        sleep(1)
+      
+      end 
+
+      it 'has access to export as csv button', focus: true do
+        admin = create_default_admin_account
+        sign_in(admin)
+        visit users_path
+        sleep(1)
+
+        expect(page).to have_content('Export')
+
+        sleep(1)
+      
+      end 
+
+      # it 'can export to csv', focus: true do
+      #   admin = create_default_admin_account
+      #   sign_in(admin)
+      #   visit users_path
+      #   sleep(1)
+
+      #   expect(page).to have_content('Export')
+
+      #   sleep(1)
+      # end
+
+      it 'can delete all users except admins', focus: true do
+        user = create_default_user_account
+        admin = create_default_admin_account
+        sign_in(admin)
+        visit users_path
+        sleep(1)
+        click_button 'Clear All Members'
+        sleep(1)
+        click_button 'Clear All Members'
+        sleep(1)
+        expect(page).to have_content('Users cleared successfully')
+        sleep(3)
+      end
+
+      it 'can see user events attended/details', focus: true do
+        user = create_default_user_account
+        admin = create_default_admin_account
+        sign_in(admin)
+
+        visit users_path
+        sleep(1)
+
+        first(:link, 'Details').click
+        sleep(1)
+
+        expect(page).to have_content('Host')
+
+        sleep(3)
+      
+      end
     end
 
     context 'as a regular user' do
@@ -260,6 +326,14 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         visit users_path
         sleep(3)
         expect(current_path).to eql dashboard_path
+      end
+
+      it 'can view event history' do
+        user = create_default_user_account
+        sign_in(user)
+        sleep(1)
+        expect(page).to have_content('Event History')
+        sleep(3)
       end
     end
   end
@@ -324,6 +398,15 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(1)
         expect(find_button('Add Reward')).to have_text('Add Reward')
         sleep(3)
+      end
+
+      it 'has button to delete all rewards' do
+        admin = create_default_admin_account
+        sign_in(admin)
+        visit rewards_path
+        sleep(1)
+        expect(page).to have_content('Clear All Rewards')
+        sleep(1)
       end
 
       it 'can add events/rewards', focus: true do
@@ -410,6 +493,49 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(3)
       end
 
+      it 'can delete all events/rewards', focus: true do
+        reward1 = Reward.new
+        reward1.name = 'Event 1'
+        reward1.description = 'Event 1 desc'
+        reward1.points_required = 5
+        reward1.when = '2021-01-08T04:05:06'
+        reward1.save!
+
+        reward2 = Reward.new
+        reward2.name = 'Event 2'
+        reward2.description = 'Event 2 desc'
+        reward2.points_required = 5
+        reward2.when = '2021-04-21T04:05:06'
+        reward2.save!
+
+        reward3 = Reward.new
+        reward3.name = 'Event 3'
+        reward3.description = 'Event 3 desc'
+        reward3.points_required = 5
+        reward3.when = '2021-01-13T04:05:06'
+        reward3.save!
+
+        admin = create_default_admin_account
+        sign_in(admin)
+
+        visit rewards_path
+
+        sleep(1)
+
+        click_button 'Clear All Rewards'
+
+        sleep(1)
+
+        expect(page).to have_content('Are you sure you want to permanently delete all rewards?')
+        expect(page).to have_content('Clear All Rewards')
+
+        click_button 'Clear All Rewards'
+
+        expect(page).to have_content('Rewards cleared successfully')
+
+        sleep(1)
+      end
+
       it 'can delete events/rewards', focus: true do
         reward1 = Reward.new
         reward1.name = 'Event 1'
@@ -474,6 +600,17 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         sleep(3)
       end
 
+      it 'cannot have access to the clear rewards button' do
+        u = create_default_user_account
+        sign_in(u)
+
+        sleep(1)
+        visit rewards_path
+        expect(page).not_to have_content('Clear All Rewards')
+        sleep(3)
+      
+      end
+
       it 'can see the number of points I have in the rewards page' do
         u = create_default_user_account
         u.points = 30
@@ -500,6 +637,25 @@ RSpec.describe 'ESC Point Tracker', type: :system do
         visit rewards_path
         expect(page).to have_content('Test Reward')
         expect(page).to have_text('50 %')
+      end
+
+      it 'can see the next reward closest to getting' do
+        reward1 = Reward.new
+        reward1.name = 'Event 1'
+        reward1.description = 'Event 1 desc'
+        reward1.points_required = 5
+        reward1.when = '2021-01-08T04:05:06'
+        reward1.save!
+
+        u = create_default_user_account
+        sign_in(u)
+
+        sleep(1)
+
+        expect(page).to have_content('Next Reward:')
+        expect(page).to have_content('Reward Date:')
+
+        sleep(3)
       end
 
       it 'can navigate to rewards from different pages' do
