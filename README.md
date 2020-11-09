@@ -7,4 +7,4 @@ This repo has three branches:
 -test
 -dev
 
-This app uses Heroku pipelines.
+This app uses Heroku pipelines. 
