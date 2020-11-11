@@ -7,7 +7,7 @@
     ESC-Point Tracker
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fas fa-bars" style="color:#fff;"></i>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -43,6 +43,8 @@
 
     <div class='show reward'>
         <h2><%= @reward.name%></h2>
+
+        <div class="table-responsive">
         <table>
             <tr>
                 <th>When:</th>
@@ -56,10 +58,13 @@
                 <th>Description: </th>
                 <td><%= @reward.description %></td>
             </tr>
-        </table>
+        </table>        
+        </div>
         <% if @user.is_admin? %>
             <%= link_to("Edit", edit_reward_path(@reward), class: 'btn btn-secondary') %>
             <%= link_to("Delete", delete_reward_path(@reward), class: 'btn btn-danger') %>
         <% end %>
     </div>
 </div>
+
+<script src="https://kit.fontawesome.com/08f62176a8.js" crossorigin="anonymous"></script>

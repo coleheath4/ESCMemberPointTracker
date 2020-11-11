@@ -7,7 +7,7 @@
     ESC-Point Tracker
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fas fa-bars" style="color:#fff;"></i>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -44,54 +44,52 @@
         <%= image_tag("profile.png", :class => "img-fluid profile-picture rounded-circle") %>
     </div>
     <div class="col-md-8">
-      <table summary="User detail view">
-        <tr>
-          <th>Username</th>
-          <td><%= @user.username %></td>
-        </tr>
-        <tr>
-          <th>First Name</th>
-          <td><%= @user.first_name %></td>
-        </tr>
-        <tr>
-          <th>Last Name</th>
-          <td><%= @user.last_name %></td>
-        </tr>
-        <tr>
-          <th>Email</th>
-        <td><%= @user.email %></td>
-        </tr>
-        <tr>
-          <th>Admin</th>
-          <td><%= @user.is_admin %></td>
-        </tr>
-        <tr>
-          <th>Points</th>
-          <td><%= @user.points %></td>
-        </tr>
-      </table>
+      <div class="table-responsive">
+        <table summary="User detail view">
+          <tr>
+            <th>Username</th>
+            <td><%= @user.username %></td>
+          </tr>
+          <tr>
+            <th>First Name</th>
+            <td><%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <th>Last Name</th>
+            <td><%= @user.last_name %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>Admin</th>
+            <td><%= @user.is_admin %></td>
+          </tr>
+          <tr>
+            <th>Points</th>
+            <td><%= @user.points %></td>
+          </tr>
+        </table>
+      </div>
 
       <%= link_to("Edit User", edit_user_path(@user), :class => 'action edit btn btn-secondary') %>
 
       <%= link_to("Delete User", delete_user_path(@user), :class => 'action delete btn btn-danger') %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-8">
-
-    </div>
-  </div>
-
 </div>
 
 <%# <%= link_to("<< Back to List", users_path, :class => 'back-link') %>
 
 <div class="container">
   <div class="row">
-    <div class="users show">
+    <h4>Events Attended</h4>
+  </div>
 
+  <div class="row">
+    <div class="users show">
       <%= render(partial: 'attended_events', :locals => {:user => @user, :return_path => user_path(@user.id), :return_path_name => "User Details - #{@user.first_name}"}) %>
-    
     </div>    
   </div>  
 </div>
