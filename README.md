@@ -16,6 +16,7 @@ This will host and run the application on local host
 
 # DEPLOY TO HEROKU
 $heroku login
+
 $git push heroku master
 
 This will push the latest code on master to heroku deployment
