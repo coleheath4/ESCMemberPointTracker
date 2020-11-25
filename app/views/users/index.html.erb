@@ -42,28 +42,30 @@
     <h4><%= flash[:notice] %></h4>
     <% end %>
 
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Points</th>
-          <th scope="col">Info</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.points %></td>
-          <td class="actions">
-            <%= link_to("Details", user_path(user), :class => 'action show') %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Points</th>
+            <th scope="col">Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.points %></td>
+            <td class="actions">
+              <%= link_to("Details", user_path(user), :class => 'action show') %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <button type="button" class="btn btn-secondary" onclick="location.href='/users.csv'">Export</button>
   </div>
 </div>

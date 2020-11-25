@@ -1,35 +1,38 @@
 <% return_path ||= nil %>
 <% return_path_name ||= nil %>
-<table class="table" summary="Event list">
-    <tr>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Host</th>
-        <th>Points Worth</th>
-        
-        
-        <% if @is_admin %>
-        <th>Created At</th>
-        <th>Last Updated</th>
+
+<div class="table-responsive">
+    <table class="table" summary="Event list">
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Host</th>
+            <th>Points Worth</th>
+            
+            
+            <% if @is_admin %>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <% end %>
+            <th>Total</th>
+        </tr>
+        <% total_points = 0 %>
+        <% user.list_events.each do |e| %>
+        <tr>
+            <td><%= Event.stringify_date(e.event_date) %></td>
+            <td><%= e.name %></td>
+            <td><%= e.short_description%></td>
+            <td><%= e.host%></td>
+            <td><%= e.point_value %></td>
+            <% if @is_admin %>
+            <td><%= Event.stringify_date(e.created_at) %></td>
+            <td><%= Event.stringify_date(e.updated_at) %></td>
+            <% end %>
+            <% total_points += e.point_value if !e.point_value.nil? %>
+            <td><%= total_points %></td>
+            <%# <td><%= link_to("Details", event_path(e, return_path: return_path, return_path_name: return_path_name), class: 'action show')%>
+        </tr>
         <% end %>
-        <th>Total</th>
-    </tr>
-    <% total_points = 0 %>
-    <% user.list_events.each do |e| %>
-    <tr>
-        <td><%= Event.stringify_date(e.event_date) %></td>
-        <td><%= e.name %></td>
-        <td><%= e.short_description%></td>
-        <td><%= e.host%></td>
-        <td><%= e.point_value %></td>
-        <% if @is_admin %>
-        <td><%= Event.stringify_date(e.created_at) %></td>
-        <td><%= Event.stringify_date(e.updated_at) %></td>
-        <% end %>
-        <% total_points += e.point_value if !e.point_value.nil? %>
-        <td><%= total_points %></td>
-        <%# <td><%= link_to("Details", event_path(e, return_path: return_path, return_path_name: return_path_name), class: 'action show')%>
-    </tr>
-    <% end %>
-</table>
+    </table>
+</div>
