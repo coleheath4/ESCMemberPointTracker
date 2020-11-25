@@ -22,6 +22,11 @@
       <li class="nav-item">
         <%= link_to('Rewards', rewards_path, :class => 'nav-link')%>
       </li>
+      <% if @is_admin %>
+      <li class="nav-item">
+        <a class="nav-link" href="https://docs.google.com/document/d/1B2wrsqT_QTKIzFtdkU_Qh8_g4TNrvY8AIORf2FUIQVc/edit?usp=sharing" target="_blank">Docs</a>
+      </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to('Logout', logout_path, :class => 'nav-link')%>
       </li>
